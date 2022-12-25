@@ -1,0 +1,74 @@
+{
+
+  "@context": {
+    
+    "id": "@id",
+    "type": "@type",
+
+    "Composable": {
+    "@id": "http://cooperation.org/credentials/v1#Composable",
+      "@context": {
+        "linkedClaim": {
+          "@id": "http://cooperation.org/credentials/v1#linkedClaim",
+          "@type": "http://cooperation.org/credentials/v1#LinkedClaim"
+        },
+        "digestMultibase": {
+          "@id": "http://cooperation.org/credentials/v1#digestMultibase"
+        },
+        "anchoredResource": {
+           "@id": "http://cooperation.org/credentials/v1#anchoredResource"
+        },
+        "respondAt": {
+           "@id": "http://cooperation.org/credentials/v1#respondAt"
+        }
+      }
+    },
+
+   "LinkedClaim": {
+      "@id": "http://cooperation.org/credentials#LinkedClaim",
+      "@context": {
+        "id": "@id",
+        "type": "@type",
+
+        "lc": "http://cooperation.org/credentials",
+
+        "claim": {
+           "@id": "lc:claim"
+        },
+        "aspect": {
+          "@id": "lc:aspect"
+        },
+        "source": {
+          "@id": "lc:source"
+        },
+        "object": {
+          "@id": "lc:object"
+        },
+        "statement": {
+          "@id": "lc:statement"
+        },
+        "confidence": {
+          "@id": "lc:confidence"
+        },
+        "effectiveDate": {
+          "@id": "lc:effectiveDate",
+          "@type": "xsd:dateTime"
+        },
+        "location": {
+          "@id": "lc:location",
+          "@type": "https://schema.org/location"
+        }
+      }
+    },
+
+    "ClaimSource": {
+       "@id": "http://cooperation.org/credentials#claimSource",
+       "@context": {
+           "sourceId": {},
+           "sourceType": {},
+           "dateObserved": "xsd:dateTime"
+       }
+    }
+
+  }
+}

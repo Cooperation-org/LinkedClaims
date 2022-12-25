@@ -1,0 +1,17 @@
+asgiref==3.5.2
+async==0.6.2
+click==8.1.3
+didkit==0.3.1
+Flask==2.2.2
+greenlet==1.1.3
+greenletio==0.9.0
+h11==0.14.0
+importlib-metadata==4.12.0
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.1
+md5hash==0.0.6
+typing-extensions==4.3.0
+uvicorn==0.18.3
+Werkzeug==2.2.2
+zipp==3.8.1
