@@ -8,20 +8,17 @@
     "Composable": {
     "@id": "http://cooperation.org/credentials/v1#Composable",
       "@context": {
-        "linkedClaim": {
-          "@id": "http://cooperation.org/credentials/v1#linkedClaim",
-          "@type": "http://cooperation.org/credentials/v1#LinkedClaim"
+        "anchoredResource": {
+           "@id": "http://cooperation.org/credentials/v1#anchoredResource"
         },
         "digestMultibase": {
           "@id": "http://cooperation.org/credentials/v1#digestMultibase"
         },
-        "anchoredResource": {
-           "@id": "http://cooperation.org/credentials/v1#anchoredResource"
-        },
-        "respondAt": {
-           "@id": "http://cooperation.org/credentials/v1#respondAt"
+        "linkedClaim": {
+          "@id": "http://cooperation.org/credentials/v1#linkedClaim",
+          "@type": "http://cooperation.org/credentials/v1#LinkedClaim"
         }
-      }
+      } 
     },
 
    "LinkedClaim": {
@@ -39,7 +36,8 @@
           "@id": "lc:aspect"
         },
         "source": {
-          "@id": "lc:source"
+          "@id": "lc:source",
+          "@type": "lc:ClaimSource"
         },
         "object": {
           "@id": "lc:object"
@@ -53,22 +51,29 @@
         "effectiveDate": {
           "@id": "lc:effectiveDate",
           "@type": "xsd:dateTime"
-        },
-        "location": {
-          "@id": "lc:location",
-          "@type": "https://schema.org/location"
         }
       }
     },
 
     "ClaimSource": {
        "@id": "http://cooperation.org/credentials#claimSource",
+       "@type": "@type",
        "@context": {
            "sourceId": {},
            "sourceType": {},
            "dateObserved": "xsd:dateTime"
        }
-    }
+    },
 
+    "Answerable": {
+      "@id": "http://cooperation.org/credentials/v1#Answerable",
+      "@type": "@type",
+      "@context": {
+        "respondAt": {
+          "@id": "http://cooperation.org/credentials/v1#respondAt",
+          "@type": "@id",
+          "@container": ["@set", "@list"]
+      } 
+    }
   }
 }
