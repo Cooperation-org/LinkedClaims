@@ -8,8 +8,8 @@
     "Composable": {
     "@id": "http://cooperation.org/credentials/v1#Composable",
       "@context": {
-        "anchoredResource": {
-           "@id": "http://cooperation.org/credentials/v1#anchoredResource"
+        "href": {
+           "@id": "http://cooperation.org/credentials/v1#href"
         },
         "digestMultibase": {
           "@id": "http://cooperation.org/credentials/v1#digestMultibase"
