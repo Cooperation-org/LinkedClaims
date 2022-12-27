@@ -1,31 +1,25 @@
 {
-
   "@context": {
-    
+
     "id": "@id",
     "type": "@type",
 
+    "xsd": "https://www.w3.org/2001/XMLSchema#",
+    
     "Composable": {
-    "@id": "http://cooperation.org/credentials/v1#Composable",
+      "@id": "http://cooperation.org/credentials#Composable",
       "@context": {
-        "href": {
-           "@id": "http://cooperation.org/credentials/v1#href"
-        },
         "digestMultibase": {
-          "@id": "http://cooperation.org/credentials/v1#digestMultibase"
-        },
-        "linkedClaim": {
-          "@id": "http://cooperation.org/credentials/v1#linkedClaim",
-          "@type": "http://cooperation.org/credentials/v1#LinkedClaim"
+          "@id": "http://cooperation.org/credentials#digestMultibase"
         }
       } 
     },
 
    "LinkedClaim": {
       "@id": "http://cooperation.org/credentials#LinkedClaim",
+
       "@context": {
-        "id": "@id",
-        "type": "@type",
+        "id": "@id", 
 
         "lc": "http://cooperation.org/credentials",
 
@@ -56,24 +50,25 @@
     },
 
     "ClaimSource": {
-       "@id": "http://cooperation.org/credentials#claimSource",
-       "@type": "@type",
+       "@id": "http://cooperation.org/credentials#ClaimSource",
        "@context": {
-           "sourceId": {},
-           "sourceType": {},
-           "dateObserved": "xsd:dateTime"
+           "id": { "@id": "lc:sourceId", "@type": "@id"}, 
+           "howKnown": { "@id": "lc:howKnown"},
+           "dateObserved": {
+             "@id": "lc:dateObserved",
+             "@type": "xsd:dateTime"
+           }
        }
     },
 
     "Answerable": {
       "@id": "http://cooperation.org/credentials/v1#Answerable",
-      "@type": "@type",
       "@context": {
         "respondAt": {
           "@id": "http://cooperation.org/credentials/v1#respondAt",
-          "@type": "@id",
-          "@container": ["@set", "@list"]
-      } 
+          "@type": "@id"
+        } 
+      }
     }
   }
 }
