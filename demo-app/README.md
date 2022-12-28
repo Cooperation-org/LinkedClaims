@@ -31,3 +31,5 @@ To sign a credential, run
 `python3 sign_claim.py /path/to/unsigned_claim.json`
 
 The "issuer" field in the unsigned claim will be replaced by the demo DID.
+
+Local context files will be replaced by the contents of the corresponding file in the local directory.  This is necessary because didkit does not resolve remote contexts, and has only selected contexts preloaded.

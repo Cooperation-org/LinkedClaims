@@ -1,0 +1,23 @@
+{"@context": ["https://www.w3.org/2018/credentials/v1",
+              "linked-claim-context.json",
+              "v3p0-context.json"
+             ],
+ "type": ["VerifiableCredential", "LinkedClaim", "AchievementSubject"],
+
+ "credentialSubject": {
+    "id": "https://alice123.com",
+    "type": ["LinkedClaim", "AchievementSubject"],
+    "effectiveDate": "2021-06-01",
+    "achievement": {
+        "id": "cid:mK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95",
+        "type": "Achievement",
+        "name": "OSHA Forklift Safety Training - 30 hr",
+        "description": "Employer provided Forklift safety training in compliance with OSHA 29 CFR 1910.178(I) including formal instruction, demonstration and evaluations on the job"
+    }
+  },
+  "issuanceDate": "2022-01-02T21:36:59Z"
+}
+
+     
+     
+                           
