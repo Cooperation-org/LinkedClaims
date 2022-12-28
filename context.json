@@ -6,15 +6,6 @@
 
     "xsd": "https://www.w3.org/2001/XMLSchema#",
     
-    "Composable": {
-      "@id": "http://cooperation.org/credentials#Composable",
-      "@context": {
-        "digestMultibase": {
-          "@id": "http://cooperation.org/credentials#digestMultibase"
-        }
-      } 
-    },
-
    "LinkedClaim": {
       "@id": "http://cooperation.org/credentials#LinkedClaim",
 
@@ -23,6 +14,9 @@
 
         "lc": "http://cooperation.org/credentials",
 
+        "digestMultibase": {
+          "@id": "http://cooperation.org/credentials#digestMultibase"
+        },
         "claim": {
            "@id": "lc:claim"
         },
@@ -45,7 +39,18 @@
         "effectiveDate": {
           "@id": "lc:effectiveDate",
           "@type": "xsd:dateTime"
-        }
+        },
+        "intendedAudience": {
+          "@id": "lc:intendedAudience"
+        },
+        "respondAt": {
+          "@id": "http://cooperation.org/credentials/v1#respondAt",
+          "@type": "@id"
+        },
+        "retrieveFrom": {
+          "@id": "http://cooperation.org/credentials/v1#respondAt",
+          "@type": "@id"
+        } 
       }
     },
 
@@ -59,16 +64,7 @@
              "@type": "xsd:dateTime"
            }
        }
-    },
-
-    "Answerable": {
-      "@id": "http://cooperation.org/credentials/v1#Answerable",
-      "@context": {
-        "respondAt": {
-          "@id": "http://cooperation.org/credentials/v1#respondAt",
-          "@type": "@id"
-        } 
-      }
     }
+
   }
 }
