@@ -10,9 +10,9 @@
       "@id": "http://cooperation.org/credentials#LinkedClaim",
 
       "@context": {
-        "id": "@id", 
-
         "lc": "http://cooperation.org/credentials",
+
+        "id": "@id", 
 
         "digestMultibase": {
           "@id": "http://cooperation.org/credentials#digestMultibase"
@@ -23,15 +23,15 @@
         "aspect": {
           "@id": "lc:aspect"
         },
-        "source": {
-          "@id": "lc:source",
-          "@type": "lc:ClaimSource"
+        "statement": {
+          "@id": "lc:statement"
         },
         "object": {
           "@id": "lc:object"
         },
-        "statement": {
-          "@id": "lc:statement"
+        "source": {
+          "@id": "lc:source",
+          "@type": ["lc:ClaimSource", "@id"]
         },
         "confidence": {
           "@id": "lc:confidence"
@@ -46,11 +46,7 @@
         "respondAt": {
           "@id": "http://cooperation.org/credentials/v1#respondAt",
           "@type": "@id"
-        },
-        "retrieveFrom": {
-          "@id": "http://cooperation.org/credentials/v1#respondAt",
-          "@type": "@id"
-        } 
+        }
       }
     },
 
@@ -58,13 +54,16 @@
        "@id": "http://cooperation.org/credentials#ClaimSource",
        "@context": {
            "id": { "@id": "lc:sourceId", "@type": "@id"}, 
+           "digestMultibase": { "@id": "lc:sourceDigest"},
            "howKnown": { "@id": "lc:howKnown"},
            "dateObserved": {
              "@id": "lc:dateObserved",
              "@type": "xsd:dateTime"
-           }
+           },
+           "author": { "@id": "lc:sourceId", "@type": "@id"},
+           "curator": { "@id": "lc:sourceId", "@type": "@id"},
+           "retrieveFrom": { "@id": "lc:retrieveFrom", "@type": "@id"}
        }
     }
-
   }
 }
