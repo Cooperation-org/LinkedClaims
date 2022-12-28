@@ -180,16 +180,29 @@
     "Criteria": {
       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Criteria"
     },
-    "EndorsementCredential": {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#EndorsementCredential"
-    },
-    "EndorsementSubject": {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#EndorsementSubject",
+    "RecommendationCredential": {
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential"
       "@context": {
-        "endorsementComment": {
-          "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#endorsementComment",
+        "recommender": {
+           "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommender",
+           "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommender"
+        }
+      }
+    },
+    "RecommendationSubject": {
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationSubject",
+      "@context": {
+        "recommendationComment": {
+          "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommendationComment",
           "@type": "xsd:string"
         }
+      }
+    },
+    "Recommender" : {
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommender",
+      "@context": {
+        "id": { "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommenderId", "@type": "@id"},
+        "relevance": { "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommenderRelevance"}
       }
     },
     "Evidence": {
@@ -409,9 +422,9 @@
       "@id": "https://schema.org/description",
       "@type": "xsd:string"
     },
-    "endorsement": {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#endorsement",
-      "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#EndorsementCredential",
+    "recommendation": {
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommendation",
+      "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential",
       "@container": "@set"
     },
     "image": {
