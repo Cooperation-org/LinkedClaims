@@ -181,7 +181,7 @@
       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Criteria"
     },
     "RecommendationCredential": {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential"
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential",
       "@context": {
         "recommender": {
            "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommender",
