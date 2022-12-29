@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/2018/credentials/examples/v1",
+    "linked-claim-context.json",
+    "schema-mock-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:spider123",
+    "name": "ClaimSpider"
+  },
+  "issuanceDate": "2022-01-01T00:00:00Z",
+  "expirationDate": "2025-01-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "https://example.com/products/coffee-mug",
+    "type": ["LinkedClaim", "Review"],
+    "effectiveDate": "1999-01-01", 
+    "aspect": "quality",
+    "statement": "This is a great coffee mug, would buy again.",
+    "reviewRating": {
+        "type": "ReviewRating",  
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+    },
+    "source": {
+         "type": "ClaimSource",
+         "id": "https://yelp.com/mugs/12345#review",
+         "sourceType": "web",
+         "digestMultibase": "asdfb897987",
+         "dateObserved": "2021-12-01",
+         "author": "https://yelp.com/users/joe100",
+         "curator": "https://yelp.com"
+      }
+    }
+}

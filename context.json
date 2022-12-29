@@ -54,6 +54,7 @@
        "@id": "http://cooperation.org/credentials#ClaimSource",
        "@context": {
            "digestMultibase": { "@id": "lc:sourceDigest"},
+           "sourceType": { "@id": "lc:sourceType"},
            "howKnown": { "@id": "lc:howKnown"},
            "dateObserved": {
              "@id": "lc:dateObserved",

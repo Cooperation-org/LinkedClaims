@@ -1,0 +1,29 @@
+{
+   "Review": {
+      "@id": "https://schema.org#Review",
+      "@context": {
+         "reviewRating" : {
+             "@id": "https://schema.org#reviewRating",
+             "@type": "https://schema.org#ReviewRating"
+         }
+      }
+   },
+ 
+   "ReviewRating": {
+      "@id": "https://schema.org#ReviewRating",
+
+      "@context": {
+        "schema": "https://schema.org",
+
+        "ratingValue": {
+           "@id": "schema:ratingValue"
+        },
+        "bestRating": {
+          "@id": "schema:bestRating"
+        },
+        "worstRating": {
+          "@id": "schema:worstRating"
+        }
+      }
+    }
+}
