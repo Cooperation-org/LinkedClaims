@@ -4,7 +4,7 @@
     "v3p0-context.json",
     "linked-claim-context.json"
   ],
-  "type": [ "VerifiableCredential", "RecommendationCredential" ],
+  "type": [ "VerifiableCredential", "LinkedClaim", "RecommendationSubject"  ],
   "issuer": {
     "id": "did:web:bob.example.com",
     "name": "Bob"
@@ -12,55 +12,31 @@
   "issuanceDate": "2010-01-01T00:00:00Z",
   "expirationDate": "2020-01-01T00:00:00Z",
   "credentialSubject": {
-    "id": "urn:uuid:e8096060-ce7c-47b3-a682-57098685d48d",
-    "digestMultibase": "zb1B1M6Bve5JEaNqeJSmuE", 
+    "id": "cid:kjzl6cwe1jw145vgtd06xrayaq91lw1ddag7p97z38fqgq5a5cre",
+    "name": "OSHA Forklift Safety Training - 30 hr",
+    "type": ["LinkedClaim", "RecommendationSubject" ],
+    "digestMultibase": "zb1B1M6Bve5JEaNqeJSmuE",
+    "effectiveDate": "2022-01-01",
     "recommendation": {
-       "statement": "This is a recommendation regarding Alice's 'UAV Control System for Drone Navigation' achievement. Alice has an exceptional skill set as an UAV guidance control engineer. See also the attached evidence.",
-       "recommender": {
+      "id": "cid:if9vl3kjfsldjfasz83aslkjfkjvbvnalvoiwnefoxkefnelkaqo",
+      "type": "Recommendation",
+      "statement": "Alice passed the OSHA training class with flying colors, she had perfect attendance and demonstrated full understanding of the material",
+      "recommender": {
           "id": "did:web:bob.example.com",
+          "type": "Recommender",
           "relevance": [
             {
-             "id": "https://SmartResume.com",
-             "type": "SmartResumeProfile"
+             "id": "https://SmartResume.com/bob",
+             "type": "LinkedClaim",
+             "digestMultibase": "asdfasdfadf",
+             "description": "Bob is an OSHA-certified instructor"
             },
             {
              "id": "https://linkedin.com/Bob",
-             "type": "LinkedInProfile"
-            },
-            { 
-             "id": "https://example.edu/degrees/class-of-2021/bob",
-             "name": "University Degree Credential"
-            },
-            {
-             "id": "https://sigspatial.acm.org/members/12345",
-             "description": 
-                      "https://www.acm.org/special-interest-groups/sigs/sigspatial",
-             "name": "SigSpatial Membership Credential"
-            },
-            {
-             "id": "https://example-journal.com/my-article.pdf",
-             "digestMultibase":"zQmdfTbBqBPQ7VNxZEYEj14VmRuZBkqFbiwReogJgS1zR1n",
-             "name": "Control Systems in Unmanned Flight",
-             "citation": "...",
-             "description": "I have published an article in a peer-reviewed journal." 
+             "description": "Bob taught the OSHA class referenced in the credential"
             }
-         ]
+          ]
       }
     }
-  },
-  "evidence": [
-    {
-      "id": "https://github.com/example-org/control-test-suite",
-      "type": ["recommendationEvidence"],
-      "name": "Control System Test Suite",
-      "description": "The code used to control a UAV delivering packages to an address."
-    },
-    {
-       "id": "https://control-systems-journal.example.com/12345.pdf",
-       "digestMultibase": "zQmdfRKkx7Uf8Rpr079Uh",
-        "name": "Geopositioning in Control Systems",
-        "citation": "...",
-        "description": "A particularly insightful implementation of geopositioning with precision; I was very impressed with Alice's approach."
-    }
-  ]
+  }
 }
