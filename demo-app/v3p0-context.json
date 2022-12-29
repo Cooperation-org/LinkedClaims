@@ -181,30 +181,42 @@
       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Criteria"
     },
     "RecommendationCredential": {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential",
-      "@context": {
-        "recommender": {
-           "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommender",
-           "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommender"
-        }
-      }
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential"
     },
     "RecommendationSubject": {
       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationSubject",
       "@context": {
+         "recommendation": {
+             "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommendation",
+             "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommendation"
+         },
         "recommendationComment": {
-          "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommendationComment",
+          "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#endorsementComment",
           "@type": "xsd:string"
         }
       }
     },
-    "Recommender" : {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommender",
-      "@context": {
-        "id": { "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommenderId", "@type": "@id"},
-        "relevance": { "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommenderRelevance"}
-      }
+    "Recommendation": {
+       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommendation",
+       "@context": {
+         "recommender": {
+           "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommender",
+           "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommender"
+         },
+         "statement": {
+           "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommendationStatement"
+         }
+       }
+    },   
+    "Recommender": {
+       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Recommender",
+       "@context": {
+          "relevance": {
+             "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#relevance"
+          }
+       }
     },
+ 
     "Evidence": {
       "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#Evidence",
       "@context": {
@@ -422,8 +434,8 @@
       "@id": "https://schema.org/description",
       "@type": "xsd:string"
     },
-    "recommendation": {
-      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#recommendation",
+    "endorsement": {
+      "@id": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#endorsement",
       "@type": "https://purl.imsglobal.org/spec/vc/ob/vocab.html#RecommendationCredential",
       "@container": "@set"
     },

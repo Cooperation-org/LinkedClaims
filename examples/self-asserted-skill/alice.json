@@ -8,12 +8,18 @@
     "id": "https://alice123.com",
     "type": ["LinkedClaim", "AchievementSubject"],
     "effectiveDate": "2021-06-01",
-    "achievement": {
-        "id": "cid:mK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95",
+    "achievement": [ {
+        "id": "cid:kjzl6cwe1jw145vgtd06xrayaq91lw1ddag7p97z38fqgq5a5cres",
         "type": "Achievement",
         "name": "OSHA Forklift Safety Training - 30 hr",
         "description": "Employer provided Forklift safety training in compliance with OSHA 29 CFR 1910.178(I) including formal instruction, demonstration and evaluations on the job"
-    }
+    },
+    {
+        "id": "cid:k1dpgaqe3i64kjuyet4w0zytd06xzraqwamf9wrp1jim19y27veqk",
+        "type": "Achievement",
+        "name": "Two years warehouse forklift experience",
+        "description": "Operated a forklift at the Acme warehouse"
+    }]
   },
   "issuanceDate": "2022-01-02T21:36:59Z"
 }
