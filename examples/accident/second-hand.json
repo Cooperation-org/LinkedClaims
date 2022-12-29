@@ -1,0 +1,21 @@
+{"@context": ["https://www.w3.org/2018/credentials/v1",
+              "linked-claim-context.json"
+             ],
+ "type": ["VerifiableCredential", "LinkedClaim"],
+ "issuanceDate": "2022-02-02T21:36:59Z",
+  "credentialSubject": {
+    "id": "https://accidents.example.com/reports/accident-1",
+    "type": ["LinkedClaim", "Event"],
+    "claim": "eventHappened",
+    "statement": "Truck ran a red light...",
+    "effectiveDate": "2022-01-01",
+    "source": {
+       "id": "https://mas.to/charles456",
+       "type": "ClaimSource",
+       "sourceType": "secondary",
+       "howKnown": "Charles saw the accident, he told me about it on the phone a few days after it happened",
+       "dateObserved": "2022-01-05"
+    }
+  }
+}
+

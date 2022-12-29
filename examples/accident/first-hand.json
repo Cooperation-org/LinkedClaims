@@ -1,0 +1,21 @@
+{"@context": ["https://www.w3.org/2018/credentials/v1",
+              "linked-claim-context.json"
+             ],
+ "type": ["VerifiableCredential", "LinkedClaim"],
+ "issuanceDate": "2022-02-02T21:36:59Z",
+  "credentialSubject": {
+    "id": "https://accidents.example.com/reports/accident-1",
+    "type": ["LinkedClaim"],
+    "claim": "eventHappened",
+    "statement": "Truck ran a red light...",
+    "effectiveDate": "2022-01-01",
+    "source": {
+       "id": "did:me123",
+       "type": "ClaimSource",
+       "sourceType": "firstHand",
+       "howKnown": "I saw the accident, I was standing on the corner about 20 feet away",
+       "dateObserved": "2022-01-01"
+    }
+  }
+}
+
