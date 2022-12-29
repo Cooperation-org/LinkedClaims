@@ -31,7 +31,7 @@
         },
         "source": {
           "@id": "lc:source",
-          "@type": ["lc:ClaimSource", "@id"]
+          "@type": "lc:ClaimSource"
         },
         "confidence": {
           "@id": "lc:confidence"
@@ -60,8 +60,8 @@
              "@id": "lc:dateObserved",
              "@type": "xsd:dateTime"
            },
-           "author": { "@id": "lc:sourceId", "@type": "@id"},
-           "curator": { "@id": "lc:sourceId", "@type": "@id"},
+           "author": { "@id": "lc:author", "@type": "@id"},
+           "curator": { "@id": "lc:curator", "@type": "@id"},
            "retrieveFrom": { "@id": "lc:retrieveFrom", "@type": "@id"}
        }
     }

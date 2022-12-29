@@ -1,36 +1,30 @@
 {
-    "Composable": {
-      "@id": "http://cooperation.org/credentials#Composable",
-      "@context": {
-        "digestMultibase": {
-          "@id": "http://cooperation.org/credentials#digestMultibase"
-        }
-      } 
-    },
-
    "LinkedClaim": {
       "@id": "http://cooperation.org/credentials#LinkedClaim",
 
       "@context": {
-        "id": "@id", 
-
         "lc": "http://cooperation.org/credentials",
 
+        "id": "@id", 
+
+        "digestMultibase": {
+          "@id": "http://cooperation.org/credentials#digestMultibase"
+        },
         "claim": {
            "@id": "lc:claim"
         },
         "aspect": {
           "@id": "lc:aspect"
         },
-        "source": {
-          "@id": "lc:source",
-          "@type": "lc:ClaimSource"
+        "statement": {
+          "@id": "lc:statement"
         },
         "object": {
           "@id": "lc:object"
         },
-        "statement": {
-          "@id": "lc:statement"
+        "source": {
+          "@id": "lc:source",
+          "@type": "lc:ClaimSource"
         },
         "confidence": {
           "@id": "lc:confidence"
@@ -38,6 +32,13 @@
         "effectiveDate": {
           "@id": "lc:effectiveDate",
           "@type": "xsd:dateTime"
+        },
+        "intendedAudience": {
+          "@id": "lc:intendedAudience"
+        },
+        "respondAt": {
+          "@id": "http://cooperation.org/credentials/v1#respondAt",
+          "@type": "@id"
         }
       }
     },
@@ -46,21 +47,15 @@
        "@id": "http://cooperation.org/credentials#ClaimSource",
        "@context": {
            "id": { "@id": "lc:sourceId", "@type": "@id"}, 
+           "digestMultibase": { "@id": "lc:sourceDigest"},
            "howKnown": { "@id": "lc:howKnown"},
            "dateObserved": {
              "@id": "lc:dateObserved",
              "@type": "xsd:dateTime"
-           }
+           },
+           "author": { "@id": "lc:author", "@type": "@id"},
+           "curator": { "@id": "lc:curator", "@type": "@id"},
+           "retrieveFrom": { "@id": "lc:retrieveFrom", "@type": "@id"}
        }
-    },
-
-    "Answerable": {
-      "@id": "http://cooperation.org/credentials/v1#Answerable",
-      "@context": {
-        "respondAt": {
-          "@id": "http://cooperation.org/credentials/v1#respondAt",
-          "@type": "@id"
-        } 
-      }
     }
 }
