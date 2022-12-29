@@ -1,0 +1,35 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "linked-claim-context.json",
+    "schema-mock-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:spider123",
+    "name": "ClaimSpider"
+  },
+  "issuanceDate": "2022-01-01T00:00:00Z",
+  "expirationDate": "2025-01-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "did:joe123",
+    "type": ["LinkedClaim", "Review"],
+    "effectiveDate": "1999-01-01", 
+    "statement": "Joe has earned an overall rating on Upwork from 11 client reviews",
+    "reviewRating": {
+        "type": "ReviewRating",  
+        "ratingValue": 4.8,
+        "bestRating": 5,
+        "worstRating": 1
+    },
+    "source": {
+         "type": "ClaimSource",
+         "id": "https://upwork.com/profile/joe12345",
+         "sourceType": "web",
+         "howKnown": "The user proved ownership of this profile via magic key",
+         "digestMultibase": "asdfb897987",
+         "dateObserved": "2021-12-01",
+         "curator": "https://upwork.com"
+      }
+    }
+}
