@@ -25,5 +25,21 @@
           "@id": "schema:worstRating"
         }
       }
+    },
+
+    "DonateAction": {
+       "@id": "https://schema.org#DonateAction",
+       "@context": {
+         "schema": "https://schema.org",
+         "price": {
+             "@id": "schema:price"
+         },
+         "priceCurrency": {
+             "@id": "schema:priceCurrency"
+         },
+         "recipient": {
+             "@id": "schema:recipient"
+         }
+       }
     }
 }

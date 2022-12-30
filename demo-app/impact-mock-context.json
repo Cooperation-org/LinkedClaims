@@ -1,0 +1,29 @@
+{
+   "Impact": {
+      "@id": "http://cooperation.org/credentials/impact#Impact",
+      "@context": {
+         "impactClaim" : {
+             "@id": "http://cooperation.org/credentials/impact#impactClaim",
+             "@type": "http://cooperation.org/credentials/impact#ImpactClaim"
+         }
+      }
+   },
+ 
+    "ImpactClaim": {
+       "@id": "http://cooperation.org/credentials/impact#ImpactClaim",
+       "@context": {
+         "price": {
+             "@id": "http://cooperation.org/credentials/impact#price"
+         },
+         "priceCurrency": {
+             "@id": "http://cooperation.org/credentials/impact#priceCurrency"
+         },
+         "impactType": {
+             "@id": "http://cooperation.org/credentials/impact#impactType"
+         },
+         "recipient": {
+             "@id": "http://cooperation.org/credentials/impact#recipient"
+         }
+       }
+    }
+}

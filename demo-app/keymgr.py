@@ -25,10 +25,6 @@ async def sign_with_did(vc_json, name):
 
     # TODO look up what other fields need did from credential type
 
-    print("About to try to sign this cred: ")
-    pprint(vc_json)
-
-#    pprint(jwk)
     try:
         signed_cred = await didkit.issue_credential(
             json.dumps(vc_json),
@@ -37,6 +33,9 @@ async def sign_with_did(vc_json, name):
         return signed_cred
     except Exception as e:
         warn(str(e))
+        print("Tried to sign credential: ")
+        pprint(vc_json)
+
         return "ERROR: " + str(e)
 
 

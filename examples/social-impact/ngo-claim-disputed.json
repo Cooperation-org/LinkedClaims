@@ -1,0 +1,19 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "linked-claim-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:kiyanok888",
+    "name": "Kiyano"
+  },
+  "issuanceDate": "2022-12-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "cid:09871234324",
+    "digestMultibase": "iJFZERTQSIsImNyaXQiOlsiYjY0Il0s",
+    "type": ["LinkedClaim"],
+    "effectiveDate": "2022-11-01", 
+    "statement": "NGO Helpers Intl never got me the job they promised and I had to move out of my home to the slum area and take a job carrying manure.  All they got me was a temporary wifi access to make this attestation and paid me $20 to say i had a new house.  But I am not gonna do it. The claim they made is not true."
+  }
+}

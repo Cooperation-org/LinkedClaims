@@ -25,7 +25,6 @@ def resolve_local_contexts(vc):
             context.append(src)
         else:
             # lets see if we have it locally
-            print("Parsing " + src)
             with open(src, 'r') as cf:
                lc = json.load(cf)
             context.append(lc)

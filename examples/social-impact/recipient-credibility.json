@@ -1,0 +1,41 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "linked-claim-context.json",
+    "schema-mock-context.json",
+    "impact-mock-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:Filbert999",
+    "name": "Filbert"
+  },
+  "issuanceDate": "2022-12-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "did:kiyano888",
+    "type": ["LinkedClaim", "Impact", "Review"],
+    "effectiveDate": "2022-11-01", 
+    "claim": "rating",
+    "aspect": "impact",
+    "statement": "Kiyano helped me to pay my rent one month.  He is a good guy.",
+    "reviewRating": {
+        "type": "ReviewRating",  
+        "ratingValue": 1,
+        "bestRating": 1,
+        "worstRating": 0
+    },
+    "impactClaim": {
+        "type": "ImpactClaim",
+        "id": "cid:asdf978897",
+        "price": "100",
+        "priceCurrency": "USD",
+        "recipient":"did:Filbert999"
+    },
+    "source": {
+         "type": "ClaimSource",
+         "id": "did:Filbert999",
+         "sourceType": "firstHand",
+         "dateObserved": "2022-11-01"
+      }
+    }
+}

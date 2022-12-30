@@ -25,11 +25,13 @@
     "source": {
          "type": "ClaimSource",
          "id": "https://upwork.com/profile/joe12345",
+         "digestMultibase": "asdfb897987",
+         "retrieveFrom": ["https://upwork.com/profile/joe12345", "https://linkedtrust.us/snapshots/upwork-profile-joe12345-poiuweri"],
          "sourceType": "web",
          "howKnown": "The user proved ownership of this profile via magic key",
-         "digestMultibase": "asdfb897987",
          "dateObserved": "2021-12-01",
-         "curator": "https://upwork.com"
+         "curator": "https://upwork.com",
+         "author": "https://upwork.com/clients/client456"
       }
     }
 }
