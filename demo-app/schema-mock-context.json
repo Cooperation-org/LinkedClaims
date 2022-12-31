@@ -23,6 +23,9 @@
         },
         "worstRating": {
           "@id": "schema:worstRating"
+        },
+        "ratingAspect": {
+          "@id": "schema:ratingAspect"
         }
       }
     },

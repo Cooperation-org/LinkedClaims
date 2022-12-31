@@ -36,6 +36,5 @@ def signit(vc, name='local_did'):
 resolve_local_contexts(vc)
 signed = signit(vc)
 
-print(signed)     
-              
+print(signed)              
 

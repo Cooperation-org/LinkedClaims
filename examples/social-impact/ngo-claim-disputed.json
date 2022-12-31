@@ -1,7 +1,8 @@
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "linked-claim-context.json"
+    "linked-claim-context.json",
+    "schema-mock-context.json"
   ],
   "type": ["VerifiableCredential"],
   "issuer": {
@@ -12,8 +13,15 @@
   "credentialSubject": {
     "id": "cid:09871234324",
     "digestMultibase": "iJFZERTQSIsImNyaXQiOlsiYjY0Il0s",
-    "type": ["LinkedClaim"],
+    "type": ["LinkedClaim", "Review"],
     "effectiveDate": "2022-11-01", 
-    "statement": "NGO Helpers Intl never got me the job they promised and I had to move out of my home to the slum area and take a job carrying manure.  All they got me was a temporary wifi access to make this attestation and paid me $20 to say i had a new house.  But I am not gonna do it. The claim they made is not true."
+    "statement": "This claim is not true I definitely did not get any $20000 benefit. They gave me $20 and had an event with bad food. I would like to get a new house like they said how can I do that",
+    "reviewRating": {
+        "type": "ReviewRating",
+        "ratingValue": 0,
+        "bestRating": 5,
+        "worstRating": 0,
+        "ratingAspect": "accuracy"
+    }
   }
 }

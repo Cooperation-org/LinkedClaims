@@ -2,7 +2,6 @@
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "linked-claim-context.json",
-    "schema-mock-context.json",
     "impact-mock-context.json"
   ],
   "type": ["VerifiableCredential"],
@@ -13,16 +12,9 @@
   "issuanceDate": "2022-12-01T00:00:00Z",
   "credentialSubject": {
     "id": "did:ngo123",
-    "type": ["LinkedClaim", "Impact", "Review"],
+    "type": ["LinkedClaim", "Impact"],
     "effectiveDate": "2022-11-01", 
-    "claim": "positiveImpact",
-    "statement": "NGO Helpers Intl got me a smart phone and wifi access.  They were considerate and helpful, though I did want a different phone this one is good.",
-    "reviewRating": {
-        "type": "ReviewRating",  
-        "ratingValue": 4.5,
-        "bestRating": 5,
-        "worstRating": 0
-    },
+    "statement": "NGO Helpers Intl got me a smart phone and wifi access.",
     "impactClaim": {
         "type": "ImpactClaim",
         "impactType": "direct",
@@ -30,6 +22,7 @@
         "priceCurrency": "USD",
         "recipient": "did:personal345"
     },
+
     "source": {
          "type": "ClaimSource",
          "id": "did:personal345",

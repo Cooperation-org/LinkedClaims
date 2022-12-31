@@ -1,0 +1,7 @@
+Tried to sign credential: 
+{'@context': ['https://www.w3.org/2018/credentials/v1'],
+ 'credentialSubject': {'id': 'https://alice123.com'},
+ 'issuanceDate': '2022-01-02',
+ 'issuer': 'did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1',
+ 'type': ['VerifiableCredential']}
+ERROR: premature end of input at line 1 column 172

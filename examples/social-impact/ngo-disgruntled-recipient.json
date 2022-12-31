@@ -2,8 +2,7 @@
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "linked-claim-context.json",
-    "schema-mock-context.json",
-    "impact-mock-context.json"
+    "schema-mock-context.json"
   ],
   "type": ["VerifiableCredential"],
   "issuer": {
@@ -12,22 +11,16 @@
   },
   "issuanceDate": "2022-12-01T00:00:00Z",
   "credentialSubject": {
-    "id": "did:ngo123",
-    "type": ["LinkedClaim", "Impact", "Review"],
+    "id": "did:ngo987",
+    "type": ["LinkedClaim", "Review"],
     "effectiveDate": "2022-11-01", 
-    "claim": "positiveImpact",
-    "statement": "NGO Helpers Intl never got me the job they promised and I had to move out of my home to the slum area and take a job carrying manure.  All they got me was a temporary wifi access to make this review and paid me $20 to say i had a new house.  But I am not gonna do it.",
+    "statement": "NGO Fakers Intl never got me the job they promised and I had to move out of my home to the slum area and take a job carrying manure.  I am writing this review so they stop pretending to help us.  Please do not share my name with them.",
     "reviewRating": {
         "type": "ReviewRating",  
         "ratingValue": 1,
         "bestRating": 5,
-        "worstRating": 0
-    },
-    "impactClaim": {
-        "type": "ImpactClaim",
-        "price": "20",
-        "priceCurrency": "USD",
-        "recipient": "did:kiyanok888"
+        "worstRating": 0,
+        "ratingAspect": "impact"
     },
     "source": {
          "type": "ClaimSource",

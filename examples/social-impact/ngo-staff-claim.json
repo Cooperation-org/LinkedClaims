@@ -12,17 +12,10 @@
   },
   "issuanceDate": "2022-12-01T00:00:00Z",
   "credentialSubject": {
-    "id": "did:ngo123",
-    "type": ["LinkedClaim", "Impact", "Review"],
+    "id": "did:ngo987",
+    "type": ["LinkedClaim", "Impact"],
     "effectiveDate": "2022-11-01", 
-    "claim": "positiveImpact",
-    "statement": "NGO Helpers Intl made a huge difference to Kiano K who now has a new house and job due to our work.",
-    "reviewRating": {
-        "type": "ReviewRating",  
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 0
-    },
+    "statement": "NGO Fakers Intl made a huge difference to Kiano K who now has a new house and job due to our work.",
     "impactClaim": {
         "type": "ImpactClaim",
         "id": "cid:09871234324",
@@ -33,9 +26,9 @@
     },
     "source": {
          "type": "ClaimSource",
-         "id": "did:employee678",
-         "sourceType": "secondHand",
-         "howKnown": "Kiano K was a recipient of our 2022 project, he was listed in an internal report",
+         "id": "https://fakers-intl.com/annualReportDetail.pdf",
+         "sourceType": "document",
+         "howKnown": "Kiano K was a recipient of our 2022 project, he was listed in an internal report as receiving this much benefit",
          "dateObserved": "2022-11-01"
       }
     }

@@ -1,0 +1,26 @@
+{
+   "Risk": {
+      "@id": "http://cooperation.org/credentials/risk#Risk",
+      "@context": {
+         "incidentClaim" : {
+             "@id": "http://cooperation.org/credentials/risk#incidentClaim",
+             "@type": "http://cooperation.org/credentials/risk#IncidentClaim"
+         }
+      }
+   },
+ 
+    "IncidentClaim": {
+       "@id": "http://cooperation.org/credentials/risk#IncidentClaim",
+       "@context": {
+         "incidentType": {
+             "@id": "http://cooperation.org/credentials/risk#incidentType"
+         },
+         "incidentDate": {
+             "@id": "http://cooperation.org/credentials/risk#incidentDate"
+         },
+         "narrative": {
+             "@id": "http://cooperation.org/credentials/risk#narrative"
+         }
+       }
+    }
+}
