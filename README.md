@@ -10,7 +10,7 @@ to verify that the linked object has not changed.
 
 [demo-app](./demo-app) is a small reference application in python for signing claims using didkit
 
-[examples](./examples) contains simulated real-world examples
+[examples](./examples) contains simulated and actual real-world examples
   * [Product Review](./examples/product-review) Product review scraped from existing site
   * [Self-Asserted Skill](./examples/self-asserted-skill) Worker asserting skills and receiving recommendations from colleagues
   * [Social Impact](./examples/social-impact) NGO recipients attesting to impact
