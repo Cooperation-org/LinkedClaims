@@ -15,3 +15,7 @@ to verify that the linked object has not changed.
   [./examples/self-asserted-skill](Self-Asserted Skill) Worker asserting skills and receiving recommendations from colleagues
   [./examples/social-impact](Social Impact) NGO recipients attesting to impact
   [./examples/worker-reputation](Worker Reputation) Worker exporting their earned reputation from a gig site
+
+
+This repo is normally mirrored at both
+[https://github.com/Cooperation-org/LinkedClaims](https://github.com/Cooperation-org/LinkedClaims) and [https://codeberg.org/cooperation/LinkedClaims](https://codeberg.org/cooperation/LinkedClaims)
