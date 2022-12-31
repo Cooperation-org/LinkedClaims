@@ -21,5 +21,5 @@ to verify that the linked object has not changed.
 This repo is normally mirrored at both
 [https://github.com/Cooperation-org/LinkedClaims](https://github.com/Cooperation-org/LinkedClaims) and [https://codeberg.org/cooperation/LinkedClaims](https://codeberg.org/cooperation/LinkedClaims)
 
-This repo came out of a draft paper at RWoT : [Composable Credentials](https://github.com/WebOfTrustInfo/rwot11-the-hague/blob/master/draft-documents/composable-credentials.md)
-And from some design work at http://cooperation.org/linked_trust
+The context and examples here came out of a draft paper at RWoT : [Composable Credentials](https://github.com/WebOfTrustInfo/rwot11-the-hague/blob/master/draft-documents/composable-credentials.md)
+and from some design work at http://cooperation.org/linked_trust
