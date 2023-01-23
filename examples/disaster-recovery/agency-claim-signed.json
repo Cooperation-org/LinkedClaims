@@ -1,0 +1,182 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    {
+      "ClaimSource": {
+        "@context": {
+          "author": {
+            "@id": "lc:author",
+            "@type": "@id"
+          },
+          "curator": {
+            "@id": "lc:curator",
+            "@type": "@id"
+          },
+          "dateObserved": {
+            "@id": "lc:dateObserved",
+            "@type": "xsd:dateTime"
+          },
+          "digestMultibase": {
+            "@id": "lc:sourceDigest"
+          },
+          "howKnown": {
+            "@id": "lc:howKnown"
+          },
+          "retrieveFrom": {
+            "@id": "lc:retrieveFrom",
+            "@type": "@id"
+          },
+          "sourceType": {
+            "@id": "lc:sourceType"
+          }
+        },
+        "@id": "http://cooperation.org/credentials#ClaimSource"
+      },
+      "LinkedClaim": {
+        "@context": {
+          "aspect": {
+            "@id": "lc:aspect"
+          },
+          "claim": {
+            "@id": "lc:claim"
+          },
+          "confidence": {
+            "@id": "lc:confidence"
+          },
+          "digestMultibase": {
+            "@id": "http://cooperation.org/credentials#digestMultibase"
+          },
+          "effectiveDate": {
+            "@id": "lc:effectiveDate",
+            "@type": "xsd:dateTime"
+          },
+          "id": "@id",
+          "intendedAudience": {
+            "@id": "lc:intendedAudience"
+          },
+          "lc": "http://cooperation.org/credentials",
+          "object": {
+            "@id": "lc:object"
+          },
+          "respondAt": {
+            "@id": "http://cooperation.org/credentials/v1#respondAt",
+            "@type": "@id"
+          },
+          "source": {
+            "@id": "lc:source",
+            "@type": "lc:ClaimSource"
+          },
+          "statement": {
+            "@id": "lc:statement"
+          }
+        },
+        "@id": "http://cooperation.org/credentials#LinkedClaim"
+      }
+    },
+    {
+      "ReviewRating": {
+        "@context": {
+          "bestRating": {
+            "@id": "schema:bestRating"
+          },
+          "ratingAspect": {
+            "@id": "schema:ratingAspect"
+          },
+          "ratingValue": {
+            "@id": "schema:ratingValue"
+          },
+          "schema": "https://schema.org",
+          "worstRating": {
+            "@id": "schema:worstRating"
+          }
+        },
+        "@id": "https://schema.org#ReviewRating"
+      },
+      "Review": {
+        "@context": {
+          "reviewRating": {
+            "@id": "https://schema.org#reviewRating",
+            "@type": "https://schema.org#ReviewRating"
+          }
+        },
+        "@id": "https://schema.org#Review"
+      },
+      "DonateAction": {
+        "@context": {
+          "price": {
+            "@id": "schema:price"
+          },
+          "priceCurrency": {
+            "@id": "schema:priceCurrency"
+          },
+          "recipient": {
+            "@id": "schema:recipient"
+          },
+          "schema": "https://schema.org"
+        },
+        "@id": "https://schema.org#DonateAction"
+      }
+    },
+    {
+      "Impact": {
+        "@context": {
+          "impactClaim": {
+            "@id": "http://cooperation.org/credentials/impact#impactClaim",
+            "@type": "http://cooperation.org/credentials/impact#ImpactClaim"
+          }
+        },
+        "@id": "http://cooperation.org/credentials/impact#Impact"
+      },
+      "ImpactClaim": {
+        "@context": {
+          "impactType": {
+            "@id": "http://cooperation.org/credentials/impact#impactType"
+          },
+          "price": {
+            "@id": "http://cooperation.org/credentials/impact#price"
+          },
+          "priceCurrency": {
+            "@id": "http://cooperation.org/credentials/impact#priceCurrency"
+          },
+          "recipient": {
+            "@id": "http://cooperation.org/credentials/impact#recipient"
+          }
+        },
+        "@id": "http://cooperation.org/credentials/impact#ImpactClaim"
+      }
+    }
+  ],
+  "type": [
+    "VerifiableCredential"
+  ],
+  "credentialSubject": {
+    "id": "did:agency987",
+    "impactClaim": {
+      "id": "cid:09871234324",
+      "impactType": "direct",
+      "type": "ImpactClaim"
+    },
+    "type": [
+      "LinkedClaim",
+      "Impact"
+    ],
+    "effectiveDate": "2022-12-01",
+    "statement": "Recovery Agency helped 200 individuals repair their homes after Hurricane Zekko, with ongoing work on at least 50 locations as of this date.",
+    "source": {
+      "dateObserved": "2022-12-01",
+      "howKnown": "Published to web",
+      "id": "https://recoveryagency.com/2022/ReportDetail.pdf",
+      "sourceType": "document",
+      "type": "ClaimSource"
+    }
+  },
+  "issuer": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
+  "issuanceDate": "2022-12-01T00:00:00Z",
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1#z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
+    "created": "2023-01-23T09:42:26.874Z",
+    "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..RNGybbmwDJuDOWRluPd4-E-7tHZZDpJVv7aYlMksG_4n-SizUq8qBfQPPEZv4D1xIb1XvL4COk1_hDr2VHjtDA"
+  }
+}

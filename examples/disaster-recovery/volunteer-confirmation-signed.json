@@ -1,0 +1,147 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    {
+      "LinkedClaim": {
+        "@context": {
+          "aspect": {
+            "@id": "lc:aspect"
+          },
+          "claim": {
+            "@id": "lc:claim"
+          },
+          "confidence": {
+            "@id": "lc:confidence"
+          },
+          "digestMultibase": {
+            "@id": "http://cooperation.org/credentials#digestMultibase"
+          },
+          "effectiveDate": {
+            "@id": "lc:effectiveDate",
+            "@type": "xsd:dateTime"
+          },
+          "id": "@id",
+          "intendedAudience": {
+            "@id": "lc:intendedAudience"
+          },
+          "lc": "http://cooperation.org/credentials",
+          "object": {
+            "@id": "lc:object"
+          },
+          "respondAt": {
+            "@id": "http://cooperation.org/credentials/v1#respondAt",
+            "@type": "@id"
+          },
+          "source": {
+            "@id": "lc:source",
+            "@type": "lc:ClaimSource"
+          },
+          "statement": {
+            "@id": "lc:statement"
+          }
+        },
+        "@id": "http://cooperation.org/credentials#LinkedClaim"
+      },
+      "ClaimSource": {
+        "@context": {
+          "author": {
+            "@id": "lc:author",
+            "@type": "@id"
+          },
+          "curator": {
+            "@id": "lc:curator",
+            "@type": "@id"
+          },
+          "dateObserved": {
+            "@id": "lc:dateObserved",
+            "@type": "xsd:dateTime"
+          },
+          "digestMultibase": {
+            "@id": "lc:sourceDigest"
+          },
+          "howKnown": {
+            "@id": "lc:howKnown"
+          },
+          "retrieveFrom": {
+            "@id": "lc:retrieveFrom",
+            "@type": "@id"
+          },
+          "sourceType": {
+            "@id": "lc:sourceType"
+          }
+        },
+        "@id": "http://cooperation.org/credentials#ClaimSource"
+      }
+    },
+    {
+      "ImpactClaim": {
+        "@context": {
+          "impactType": {
+            "@id": "http://cooperation.org/credentials/impact#impactType"
+          },
+          "price": {
+            "@id": "http://cooperation.org/credentials/impact#price"
+          },
+          "priceCurrency": {
+            "@id": "http://cooperation.org/credentials/impact#priceCurrency"
+          },
+          "recipient": {
+            "@id": "http://cooperation.org/credentials/impact#recipient"
+          }
+        },
+        "@id": "http://cooperation.org/credentials/impact#ImpactClaim"
+      },
+      "Impact": {
+        "@context": {
+          "impactClaim": {
+            "@id": "http://cooperation.org/credentials/impact#impactClaim",
+            "@type": "http://cooperation.org/credentials/impact#ImpactClaim"
+          }
+        },
+        "@id": "http://cooperation.org/credentials/impact#Impact"
+      }
+    }
+  ],
+  "type": [
+    "VerifiableCredential"
+  ],
+  "credentialSubject": {
+    "id": "did:agency987",
+    "impactClaim": {
+      "impactType": "direct",
+      "price": "2000",
+      "priceCurrency": "USD",
+      "recipient": "did:personal345",
+      "type": "ImpactClaim"
+    },
+    "statement": "I chose a random location from 20 provided to me by Recovery Agency and witnessed repair work ongoing.  I spoke to the foreman who confirmed receipt of funds from Recovery Agency for the work.",
+    "source": [
+      {
+        "dateObserved": "2022-12-07",
+        "id": "did:personal345",
+        "sourceType": "firstHand",
+        "type": "ClaimSource"
+      },
+      {
+        "dateObserved": "2022-12-07",
+        "id": "https://www.dropbox.com/s/e03ppi5wki26k1s/puerto-rico-hurricane-maria-ap-17278092354742.jpeg?dl=0",
+        "sourceType": "photograph",
+        "type": "ClaimSource"
+      }
+    ],
+    "type": [
+      "LinkedClaim",
+      "Impact"
+    ],
+    "effectiveDate": "2022-12-07"
+  },
+  "issuer": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
+  "issuanceDate": "2022-12-15T00:00:00Z",
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1#z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
+    "created": "2023-01-23T09:43:07.017Z",
+    "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..9WhqD8avc6l4-tcaOSG2-NXHrcX6QCgPcp-iI9zvyGFVWhI3GleyubpBXsTdMlfMFbPyOlyXCtlxfX3v1mYWAQ"
+  }
+}
