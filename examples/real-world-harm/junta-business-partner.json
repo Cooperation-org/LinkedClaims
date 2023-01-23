@@ -1,0 +1,27 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "linked-claim-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:spider123",
+    "name": "LinkedTrust Spider"
+  },
+  "issuanceDate": "2022-12-30T00:00:00Z",
+  "credentialSubject": {
+    "id": "http://www.posco.com",
+    "type": ["LinkedClaim"],
+    "effectiveDate": "2022-4-21", 
+    "statement": "POSCO operates a steel joint venture (Myanmar POSCO C&C) with military conglomerate MEHL",
+    "claim": "related:businessPartner",
+    "object": "https://en.wikipedia.org/wiki/State_Administration_Council",
+    "source": {
+         "type": "ClaimSource",
+         "id": "https://data.justiceformyanmar.org/#joint-ventures-with-military",
+         "sourceType": "web",
+         "curator": "https://www.justiceformyanmar.org/",
+         "dateObserved": "2022-12-20"
+      }
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "linked-claim-context.json",
+    "risk-mock-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:spider123",
+    "name": "LinkedTrust Spider"
+  },
+  "issuanceDate": "2022-12-30T00:00:00Z",
+  "credentialSubject": {
+    "id": "https://en.wikipedia.org/wiki/State_Administration_Council",
+    "type": ["LinkedClaim", "Risk"],
+    "effectiveDate": "2022-4-21", 
+    "statement": "Seven students from Yangon’s Dagon University are believed to have been abducted by the military",
+    "claim": "HumanRightsViolation",
+    "aspect": "risk:justice",
+    "incidentClaim": [{
+        "type": "IncidentClaim",
+        "incidentType": "enforcedDisappearance",
+        "incidentDate": "2022-04-21",
+        "narrative": "On April 21, five of the students disappeared after one revealed in a phone call with Dagon University Student Union chairperson Min Htet Han that a military truck was entering their street in Bahan Township.  The students were identified as Khant Zin Win, Thura Maung Maung, Zaw Lin Naing, Thiha Htet Zaw and Hein Htet."
+       }, {
+        "type": "IncidentClaim",
+        "incidentType": "enforcedDisappearance",
+        "incidentDate": "2022-04-22",
+        "narrative": "The next day, two of their colleagues—Thet Paing Oo and Khant Lin Maung Maung—also reportedly went missing."
+       }],
+    "source": {
+         "type": "ClaimSource",
+         "id": "https://myanmar-now.org/en/news/missing-dagon-university-students-believed-to-be-in-junta-custody",
+         "sourceType": "article",
+         "dateObserved": "2022-12-20"
+      }
+    }
+}
