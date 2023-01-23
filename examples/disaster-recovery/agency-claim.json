@@ -1,0 +1,32 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "linked-claim-context.json",
+    "schema-mock-context.json",
+    "impact-mock-context.json"
+  ],
+  "type": ["VerifiableCredential"],
+  "issuer": {
+    "id": "did:employee678",
+    "name": "Angel Smith"
+  },
+  "issuanceDate": "2022-12-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "did:agency987",
+    "type": ["LinkedClaim", "Impact"],
+    "effectiveDate": "2022-12-01", 
+    "statement": "Recovery Agency helped 200 individuals repair their homes after Hurricane Zekko, with ongoing work on at least 50 locations as of this date.",
+    "impactClaim": {
+        "type": "ImpactClaim",
+        "id": "cid:09871234324",
+        "impactType":"direct"
+    },
+    "source": {
+         "type": "ClaimSource",
+         "id": "https://recoveryagency.com/2022/ReportDetail.pdf",
+         "sourceType": "document",
+         "howKnown": "Published to web",
+         "dateObserved": "2022-12-01"
+      }
+    }
+}
