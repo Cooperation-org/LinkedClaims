@@ -74,6 +74,15 @@
       }
     },
     {
+      "Review": {
+        "@context": {
+          "reviewRating": {
+            "@id": "https://schema.org#reviewRating",
+            "@type": "https://schema.org#ReviewRating"
+          }
+        },
+        "@id": "https://schema.org#Review"
+      },
       "ReviewRating": {
         "@context": {
           "bestRating": {
@@ -92,15 +101,6 @@
         },
         "@id": "https://schema.org#ReviewRating"
       },
-      "Review": {
-        "@context": {
-          "reviewRating": {
-            "@id": "https://schema.org#reviewRating",
-            "@type": "https://schema.org#ReviewRating"
-          }
-        },
-        "@id": "https://schema.org#Review"
-      },
       "DonateAction": {
         "@context": {
           "price": {
@@ -118,15 +118,6 @@
       }
     },
     {
-      "Impact": {
-        "@context": {
-          "impactClaim": {
-            "@id": "http://cooperation.org/credentials/impact#impactClaim",
-            "@type": "http://cooperation.org/credentials/impact#ImpactClaim"
-          }
-        },
-        "@id": "http://cooperation.org/credentials/impact#Impact"
-      },
       "ImpactClaim": {
         "@context": {
           "impactType": {
@@ -143,6 +134,15 @@
           }
         },
         "@id": "http://cooperation.org/credentials/impact#ImpactClaim"
+      },
+      "Impact": {
+        "@context": {
+          "impactClaim": {
+            "@id": "http://cooperation.org/credentials/impact#impactClaim",
+            "@type": "http://cooperation.org/credentials/impact#ImpactClaim"
+          }
+        },
+        "@id": "http://cooperation.org/credentials/impact#Impact"
       }
     }
   ],
@@ -151,17 +151,17 @@
   ],
   "credentialSubject": {
     "id": "did:agency987",
+    "effectiveDate": "2022-12-01",
+    "type": [
+      "LinkedClaim",
+      "Impact"
+    ],
     "impactClaim": {
       "id": "cid:09871234324",
       "impactType": "direct",
       "type": "ImpactClaim"
     },
-    "type": [
-      "LinkedClaim",
-      "Impact"
-    ],
-    "effectiveDate": "2022-12-01",
-    "statement": "Recovery Agency helped 200 individuals repair their homes after Hurricane Zeta, with ongoing work on at least 50 locations as of this date.",
+    "statement": "BEMA helped 200 individuals repair their homes after Hurricane Zeta, with ongoing work on at least 50 locations as of this date.",
     "source": {
       "dateObserved": "2022-12-01",
       "howKnown": "Published to web",
@@ -176,7 +176,7 @@
     "type": "Ed25519Signature2018",
     "proofPurpose": "assertionMethod",
     "verificationMethod": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1#z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
-    "created": "2023-01-23T09:42:26.874Z",
-    "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..RNGybbmwDJuDOWRluPd4-E-7tHZZDpJVv7aYlMksG_4n-SizUq8qBfQPPEZv4D1xIb1XvL4COk1_hDr2VHjtDA"
+    "created": "2023-02-05T18:17:42.716Z",
+    "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..3BHUMyTcw1r0pkRf-ofYgkrmmxqkzcBRwrANu_zouSr3x8UakLAZ6em-lNeS7Jl3YkuP9fylng72xzlQo2j8CA"
   }
 }

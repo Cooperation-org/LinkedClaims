@@ -2,6 +2,36 @@
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     {
+      "ClaimSource": {
+        "@context": {
+          "author": {
+            "@id": "lc:author",
+            "@type": "@id"
+          },
+          "curator": {
+            "@id": "lc:curator",
+            "@type": "@id"
+          },
+          "dateObserved": {
+            "@id": "lc:dateObserved",
+            "@type": "xsd:dateTime"
+          },
+          "digestMultibase": {
+            "@id": "lc:sourceDigest"
+          },
+          "howKnown": {
+            "@id": "lc:howKnown"
+          },
+          "retrieveFrom": {
+            "@id": "lc:retrieveFrom",
+            "@type": "@id"
+          },
+          "sourceType": {
+            "@id": "lc:sourceType"
+          }
+        },
+        "@id": "http://cooperation.org/credentials#ClaimSource"
+      },
       "LinkedClaim": {
         "@context": {
           "aspect": {
@@ -41,36 +71,6 @@
           }
         },
         "@id": "http://cooperation.org/credentials#LinkedClaim"
-      },
-      "ClaimSource": {
-        "@context": {
-          "author": {
-            "@id": "lc:author",
-            "@type": "@id"
-          },
-          "curator": {
-            "@id": "lc:curator",
-            "@type": "@id"
-          },
-          "dateObserved": {
-            "@id": "lc:dateObserved",
-            "@type": "xsd:dateTime"
-          },
-          "digestMultibase": {
-            "@id": "lc:sourceDigest"
-          },
-          "howKnown": {
-            "@id": "lc:howKnown"
-          },
-          "retrieveFrom": {
-            "@id": "lc:retrieveFrom",
-            "@type": "@id"
-          },
-          "sourceType": {
-            "@id": "lc:sourceType"
-          }
-        },
-        "@id": "http://cooperation.org/credentials#ClaimSource"
       }
     },
     {
@@ -114,7 +114,6 @@
       "recipient": "did:personal345",
       "type": "ImpactClaim"
     },
-    "statement": "I chose a random location from 20 provided to me by Recovery Agency and witnessed repair work ongoing.  I spoke to the foreman who confirmed receipt of funds from Recovery Agency for the work.",
     "source": [
       {
         "dateObserved": "2022-12-07",
@@ -133,7 +132,8 @@
       "LinkedClaim",
       "Impact"
     ],
-    "effectiveDate": "2022-12-07"
+    "effectiveDate": "2022-12-07",
+    "statement": "I chose a random location from 20 provided to me by BEMA and witnessed repair work ongoing.  I spoke to the foreman who confirmed receipt of funds from BEMA for the work."
   },
   "issuer": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
   "issuanceDate": "2022-12-15T00:00:00Z",
@@ -141,7 +141,7 @@
     "type": "Ed25519Signature2018",
     "proofPurpose": "assertionMethod",
     "verificationMethod": "did:key:z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1#z6MkqmK65rR12feeNgu9foTvzxcSidCwegGzTtAjVk95att1",
-    "created": "2023-01-23T09:43:07.017Z",
-    "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..9WhqD8avc6l4-tcaOSG2-NXHrcX6QCgPcp-iI9zvyGFVWhI3GleyubpBXsTdMlfMFbPyOlyXCtlxfX3v1mYWAQ"
+    "created": "2023-02-05T18:22:21.180Z",
+    "jws": "eyJhbGciOiJFZERTQSIsImNyaXQiOlsiYjY0Il0sImI2NCI6ZmFsc2V9..BvaAOlDN9UTyLw60pj9MRdn8rPqeAz6yAEMCKBbv4VmEluR-53A90YpRUH2ZzGOkjEGfJA5AMzkXH6GLaE4YBQ"
   }
 }
