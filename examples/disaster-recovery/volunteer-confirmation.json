@@ -7,14 +7,14 @@
   "type": ["VerifiableCredential"],
   "issuer": {
     "id": "did:personal345",
-    "name": "Kiyana Jacobson"
+    "name": "Vic Volunteer"
   },
   "issuanceDate": "2022-12-15T00:00:00Z",
   "credentialSubject": {
     "id": "did:agency987",
     "type": ["LinkedClaim", "Impact"],
     "effectiveDate": "2022-12-07",
-    "statement": "I chose a random location from 20 provided to me by Recovery Agency and witnessed repair work ongoing.  I spoke to the foreman who confirmed receipt of funds from Recovery Agency for the work.",
+    "statement": "I chose a random location from 20 provided to me by BEMA and witnessed repair work ongoing.  I spoke to the foreman who confirmed receipt of funds from BEMA for the work.",
     "impactClaim": {
         "type": "ImpactClaim",
         "impactType": "direct",
