@@ -1,11 +1,11 @@
-# Verifiable Credentials as ComposeDB Models 
+# Verifiable Credentials on the Ceramic Network
 
 **Authors:**
 Golda Velez (3box) <golda@3box.io>
 
 This may possibly become a future CIP (Ceramic Improvement Proposal) https://github.com/ceramicnetwork/CIPs
 
-# **Introduction**:
+## **Introduction**:
 
 ComposeDB models are similar to Verifiable Credentials in that they are a structured set of fields signed by a DID.  
 
@@ -14,7 +14,7 @@ and benefiting from the Ceramic protocol capability of updating the contents at 
 
 Providing a native storage and retrieval mechanisms for verifiable credentials would be of value to adoption and use in the decentralized web.
 
-# **Implementation**:
+## **Implementation**:
 
 If we can convert a ComposeDB document to and from a valid Verifiable Credential including signature, this would provide a powerful decentralized 
 storage and update system for VCs.
@@ -33,7 +33,7 @@ across both specifications.  This is uncertain and will be the initial focus of 
 
 If it is determined that (3) is not possible, then the project will focus on a tool that implements method (1) or (2)
 
-# **Example**:
+## **Example**:
 
 A simple example of a permissionless claim might be a witness to an accident, that has already been reported on some classical website:
 
@@ -104,7 +104,7 @@ The Ceramic format has some additional fields defining the model, but would seem
 
 The question is, whether fields can be defined on both the Verifiable Credential and Ceramic model side, to make the signature portable across the two.
 
-# **Benefits**:
+## **Benefits**:
 
 If this is successful, then it provides an immediate decentralized storage and retrieval mechanism for sharing verifiable credentials in a public data feed.  
 
