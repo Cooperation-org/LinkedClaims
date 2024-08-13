@@ -23,11 +23,17 @@ Specifically, a LinkedClaim
 
 * MUST include a date that is in the signed data
 
+* MUST have some claim text field
+
 * SHOULD have the ability to point to a source, possibly separate from the issuer
 
 * SHOULD have the ability to point to hashlinked evidence, or may be linked to evidence by a connecting claim
 
+* SHOULD have a narrative statement field
+
 * MAY be a verifiable credential
+
+* MAY provide a way for the issuer to mutate or revoke the claim
 
 * MAY have a subject that itself is a claim
 
