@@ -6,7 +6,7 @@ The intention is to have a broad standard that is implementation independent
 
 ---
 
- A signed, structured document about a URI, that itself has a URI.
+ A signed, structured document with a claim about a URI, that itself has a URI.
 
 ---
 
