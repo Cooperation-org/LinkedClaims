@@ -14,24 +14,20 @@ Specifically, a LinkedClaim
 
 * MUST have a subject that can be any valid URI
 
-* MUST itself have a URI to be addressed at
+* MUST itself have an identifier that is a well-formed URI (URN is acceptable)
 
 * SHOULD be hashable, ie, have determinate content when retrieved from the URI
  (possibly when retrieved with a specific content-type or with a specific query parameter)
 
 * MUST be cryptographically signed, such as with a DID
 
-* MUST include a date that is in the signed data
+* SHOULD include a date that is in the signed data
 
-* MUST have some claim text field
+* SHOULD contain evidence such as links to a source or attachments, optionally hashlinked
 
-* SHOULD have the ability to point to a source, possibly separate from the issuer
+* MAY have a narrative statement
 
-* SHOULD have the ability to point to hashlinked evidence, or may be linked to evidence by a connecting claim
-
-* SHOULD have a narrative statement field
-
-* MAY be a verifiable credential
+* MAY be a W3C Verifiable Credential or similar digital credential specification
 
 * MAY provide a way for the issuer to mutate or revoke the claim
 
@@ -39,6 +35,5 @@ Specifically, a LinkedClaim
 
 * MAY have a separate published date and effective date
 
-* MAY be published in an open data stream
+* MAY be public or access controlled
 
-* MAY be consumed and rolled up into predictions and scores (which themselves may be claims)
