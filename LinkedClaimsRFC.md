@@ -1,6 +1,6 @@
 # LinkedClaims
 
-The intention is to have a broad standard that is implementation independent
+The intention is to have a broad standard that is implementation independent, for making claims about entities that can be connected together across different platforms, storages and implementations.  Such claims may be public or private/access-gated.
 
 ## What is a LinkedClaim?
 
