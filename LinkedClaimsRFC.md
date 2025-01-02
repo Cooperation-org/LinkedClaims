@@ -16,10 +16,10 @@ Specifically, a LinkedClaim
 
 * MUST itself have an identifier that is a well-formed URI (URN is acceptable)
 
+* MUST be cryptographically signed, such as with a DID
+
 * SHOULD be hashable, ie, have determinate content when retrieved from the URI
  (possibly when retrieved with a specific content-type or with a specific query parameter)
-
-* MUST be cryptographically signed, such as with a DID
 
 * SHOULD include a date that is in the signed data
 
