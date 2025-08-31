@@ -6,6 +6,10 @@ The LinkedClaim vocabulary enables linking to
 third party sources (possibly unsigned) or to other claims, using the `digestMultibase` field
 to verify that the linked object has not changed. 
 
+Update Feb 2025: [LinkedClaims: An Open Standard](https://identity.foundation/labs-linkedclaims/) published at Decentralized Identity Foundation with minimal requirements clarified.
+
+---
+
 [LinkedClaim Context](./context.json) file is published at [http://cooperation.org/credentials/v1](cooperation.org/credentials/v1)
 
 [demo-app](./demo-app) is a small reference application in python for signing claims using didkit
