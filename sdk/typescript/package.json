@@ -1,0 +1,51 @@
+{
+  "name": "@cooperation/linked-claims",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for LinkedClaims - create and manage trust claims",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "linkedclaims",
+    "trust",
+    "verifiable-credentials",
+    "web-of-trust"
+  ],
+  "author": "Cooperation.org",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cooperation-org/LinkedClaims.git",
+    "directory": "sdk/typescript"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
