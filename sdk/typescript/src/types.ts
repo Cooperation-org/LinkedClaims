@@ -224,6 +224,13 @@ export interface LinkedClaimsError extends Error {
     details?: any;
 }
 
+// Validation
+export interface ValidationResult {
+    field: string;
+    error: string;
+    value?: any;
+}
+
 // Configuration
 export interface LinkedClaimsConfig {
     baseUrl?: string;

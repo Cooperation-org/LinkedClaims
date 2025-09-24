@@ -63,13 +63,9 @@ export class SemanticHelpers {
     }
     
     /**
-     * Get field guidance based on context
+     * Get generic field guidance - apps should customize for their use case
      */
-    getFieldGuidance(field: string, context?: {
-        domain?: string;
-        claimType?: string;
-        userRole?: string;
-    }): FieldGuidance {
+    getFieldGuidance(field: string): FieldGuidance {
         const guides: Record<string, FieldGuidance> = {
             subject: {
                 label: 'What is this claim about?',
@@ -169,17 +165,6 @@ export class SemanticHelpers {
                 ]
             }
         };
-        
-        // Customize based on context
-        if (context?.domain === 'impact' && field === 'subject') {
-            guides.subject.label = 'What project or initiative had impact?';
-            guides.subject.help = 'Enter the URL of the project, organization, or initiative that created impact';
-        }
-        
-        if (context?.claimType === 'endorsement' && field === 'subject') {
-            guides.subject.label = 'Who are you endorsing?';
-            guides.subject.help = 'Enter the profile URL of the person you\'re endorsing';
-        }
         
         return guides[field] || {
             label: field,

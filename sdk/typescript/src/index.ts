@@ -18,6 +18,16 @@ export { AuthAPI, ProfileAPI } from './auth-api';
 export { SemanticHelpers } from './semantic-helpers';
 export { BaseAPIClient } from './base-api-client';
 
+// New validation and normalization modules
+export * as validators from './validators';
+export * as normalizers from './normalizers';
+export * as constants from './constants';
+
+// Direct exports for convenience
+export { isValidUri, validateClaim, validateClaimField } from './validators';
+export { starsToScore, scoreToStars, normalizeUri, userIdToUri } from './normalizers';
+export { getBaseUrl, VALIDATION_LIMITS, DEFAULTS, ENDPOINTS } from './constants';
+
 // Convenience re-exports for common types
 export type {
     Claim,
