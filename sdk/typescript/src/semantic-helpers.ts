@@ -189,10 +189,12 @@ export class SemanticHelpers {
             [EntityType.PERSON]: 'person',
             [EntityType.ORGANIZATION]: 'org',
             [EntityType.DOCUMENT]: 'doc',
-            [EntityType.PROJECT]: 'project',
             [EntityType.IMPACT]: 'impact',
             [EntityType.EVENT]: 'event',
-            [EntityType.PRODUCT]: 'product'
+            [EntityType.PRODUCT]: 'product',
+            [EntityType.PLACE]: 'place',
+            [EntityType.CREDENTIAL]: 'credential',
+            [EntityType.CLAIM]: 'claim'
         };
         
         const path = typeMap[type] || type.toLowerCase();
