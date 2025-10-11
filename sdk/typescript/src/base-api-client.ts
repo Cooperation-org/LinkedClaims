@@ -77,9 +77,9 @@ export class BaseAPIClient {
             errorData = { error: 'Request failed' };
         }
         
-        const error: LinkedClaimsError = new Error(
+        const error = new Error(
             errorData.error || errorData.message || `HTTP ${response.status}`
-        );
+        ) as LinkedClaimsError;
         error.code = errorData.code || 'HTTP_ERROR';
         error.statusCode = response.status;
         error.details = errorData;
