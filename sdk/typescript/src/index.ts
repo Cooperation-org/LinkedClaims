@@ -14,6 +14,7 @@ export * from './types';
 // Individual modules for advanced usage
 export { TokenManager } from './token-manager';
 export { ClaimsAPI } from './claims-api';
+export { CredentialsAPI } from './credentials-api';
 export { AuthAPI, ProfileAPI } from './auth-api';
 export { SemanticHelpers } from './semantic-helpers';
 export { BaseAPIClient } from './base-api-client';

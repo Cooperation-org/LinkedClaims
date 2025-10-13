@@ -1,6 +1,7 @@
 import { TokenManager } from './token-manager';
 import { ClaimsAPI } from './claims-api';
 import { AuthAPI, ProfileAPI } from './auth-api';
+import { CredentialsAPI } from './credentials-api';
 import { SemanticHelpers } from './semantic-helpers';
 import { LinkedClaimsConfig, User } from './types';
 
@@ -15,6 +16,7 @@ export class LinkedClaims {
     
     // API modules
     public claims: ClaimsAPI;
+    public credentials: CredentialsAPI;
     public auth: AuthAPI;
     public profiles: ProfileAPI;
     public semantic: SemanticHelpers;
@@ -35,6 +37,7 @@ export class LinkedClaims {
         
         // Initialize API modules
         this.claims = new ClaimsAPI(this.baseUrl, this.tokenManager, this.onAuthError);
+        this.credentials = new CredentialsAPI(this.baseUrl, this.tokenManager, this.onAuthError);
         this.auth = new AuthAPI(this.baseUrl, this.tokenManager, this.onAuthError);
         this.profiles = new ProfileAPI(this.baseUrl, this.tokenManager, this.onAuthError);
         this.semantic = new SemanticHelpers();
@@ -51,7 +54,16 @@ export class LinkedClaims {
     getAuthToken(): string | null {
         return this.auth.getAuthToken();
     }
-    
+
+    /**
+     * Set auth token manually (useful for server-side or custom auth flows)
+     * @param accessToken - The JWT access token from the backend
+     * @param refreshToken - Optional refresh token
+     */
+    setAuthToken(accessToken: string, refreshToken?: string): void {
+        this.tokenManager.setTokens(accessToken, refreshToken);
+    }
+
     clearTokens(): void {
         this.auth.logout();
     }

@@ -129,6 +129,37 @@ Two options:
 - Call trust_claim_backend for claims
 - See: `/Users/gv/parent/linked-trust/trust_claim_backend/GUIDE_TO_TRUST_APPS.md`
 
+## Patterns
+
+### Storing Complex Credentials (OpenBadges, Blockcerts, etc.)
+
+When your app uses rich credential formats beyond simple claims:
+
+1. **Submit full credential** to `/api/credentials`
+   - Backend stores complete credential structure
+   - Auto-extracts a LinkedClaim for graph integration
+
+2. **Keep both references**:
+   - `credentialUri` - for retrieving full credential data
+   - `claimId` - for graph queries and relationships
+
+3. **Query pattern**:
+   ```javascript
+   // Find credentials by claim type
+   const claims = await linkedClaims.claims.getClaimsBySubject(userDid);
+   
+   // Get full credential when needed
+   const credential = await fetch(`/api/credentials/${credentialUri}`);
+   ```
+
+4. **Example: Certify app**
+   - Stores OpenBadges v3 credentials
+   - No separate database (removed Firebase)
+   - Credentials preserved in full fidelity
+   - Claims enable discovery and trust graph
+
+This pattern preserves rich credential formats while gaining LinkedClaims benefits.
+
 ## Key Files
 
 - **Backend Guide:** `/Users/gv/parent/linked-trust/trust_claim_backend/GUIDE_TO_TRUST_APPS.md`
