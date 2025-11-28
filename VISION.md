@@ -10,7 +10,7 @@ Digital trust is fragmented. Credentials live in silos. Reputation doesn't trave
 
 LinkedClaims: a minimal standard where claims are addressable, signed, and can reference each other—creating a traversable graph of evidence and attestation.
 
-Not everyone has a [DID](https://www.w3.org/TR/did-1.1/). The system accommodates this: a server can sign claims on behalf of users, pointing to unsigned web2 URLs (optionally with content hash) as source. Users or agents with DIDs can authenticate and sign directly.
+Not everyone has a [DID](https://www.w3.org/TR/did-1.1/). The system accommodates this: a server can sign claims on behalf of users, and can point to unsigned web2 URLs (optionally with content hash) as sources. Users or agents with DIDs can authenticate and sign directly.
 
 
 ## Core Pattern
