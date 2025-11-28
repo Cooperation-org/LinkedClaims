@@ -45,4 +45,4 @@ LinkedClaims is not the center of the universe. Claims don't need to originate h
 
 ---
 
-*This vision applies across all repos in the ecosystem. Each repo may COPY this top part and then ADD specifics below.  Keep this link and any edits above this line should be made first here: [https://github.com/Cooperation-org/LinkedClaims/blob/main/VISION.md](https://github.com/Cooperation-org/LinkedClaims/blob/main/VISION.md).*
+*This vision applies across all repos in the ecosystem. Each repo may COPY this top part and then ADD specifics below.  Keep this link and any edits above this line should be made first here: [https://github.com/Cooperation-org/LinkedClaims/blob/main/VISION.md](https://github.com/Cooperation-org/LinkedClaims/blob/main/VISION.md).  Normally we are DRY but this is critical to have as context in every repo for AI or human coders.*
