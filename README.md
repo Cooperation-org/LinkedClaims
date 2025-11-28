@@ -21,6 +21,10 @@ Update Feb 2025: [LinkedClaims: An Open Standard](https://identity.foundation/la
   * [Worker Reputation](./examples/worker-reputation) Worker exporting their earned reputation from a gig site
   * [Real World Harm](./examples/real-world-harm) A real life example of a student activist disappeared in Myanmar, and the connected claim that POSCO still does business with the military junta, using a wikipedia URL to identify the junta in both claims.
 
+**Development Server:** https://dev.linkedtrust.us/api/docs/
+**Production Server:** https://live.linkedtrust.us/api/docs/
+
+The API documentation includes interactive examples for all endpoints.
 
 This repo is normally mirrored at both
 [https://github.com/Cooperation-org/LinkedClaims](https://github.com/Cooperation-org/LinkedClaims) and [https://codeberg.org/cooperation/LinkedClaims](https://codeberg.org/cooperation/LinkedClaims)
