@@ -27,7 +27,7 @@ Nodes emerge from subjects, objects, and sources. Edges emerge from claims. The 
 
 ## Ecosystem
 
-LinkedClaims is not the center of the universe. Claims don't need to originate here—any signed claim with a URI subject can participate. Existing claims can be referenced as sources, or wrapped by extracting their subject-claim-object structure. A claim becomes part of the active ecosystem when it's imported or wrapped.
+LinkedClaims is not the center of the universe. Claims don't need to originate here: any signed claim with a URI subject can participate. Existing claims can be referenced as sources, or wrapped by extracting their subject-claim-object structure. A claim becomes part of the active ecosystem when it's imported or wrapped.
 
 
 | Repo | Purpose |
