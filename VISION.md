@@ -42,4 +42,4 @@ Nodes emerge from subjects, objects, and sources. Edges emerge from claims. The 
 
 ---
 
-*This vision applies across all repos in the ecosystem. Each repo may add specifics but should link back here.*
+*This vision applies across all repos in the ecosystem. Each repo may add specifics but should link back here to the master for this first part: [https://github.com/Cooperation-org/LinkedClaims/blob/main/VISION.md](https://github.com/Cooperation-org/LinkedClaims/blob/main/VISION.md).*
