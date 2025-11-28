@@ -8,6 +8,8 @@ to verify that the linked object has not changed.
 
 Update Feb 2025: [LinkedClaims: An Open Standard](https://identity.foundation/labs-linkedclaims/) published at Decentralized Identity Foundation with minimal requirements clarified.
 
+This repo contains an SDK for creating applications in the decentralized web of trust.  See [./VISION.md](./VISION.md) for the LinkedClaims vision of how this decentralized web can work in a simple way that is inclusive of external projects and sources as well.
+
 ---
 
 [LinkedClaim Context](./context.json) file is published at [http://cooperation.org/credentials/v1](cooperation.org/credentials/v1)
