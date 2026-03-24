@@ -1,8 +1,33 @@
 # LinkedClaims Field Reference
 
 This is the canonical reference for all claim fields. If you are building a client, use
-these exact field names, types, and validation rules. This is the contract between your
-app and the ecosystem.
+these exact field names, types, and validation rules. This is the contract.
+
+## All Fields at a Glance
+
+| Field | Required | Type | REST API name | ATProto name | Notes |
+|-------|----------|------|---------------|--------------|-------|
+| subject | **Yes** | string (URI) | `subject` | `subject` | What the claim is about |
+| claim type | **Yes** | string | `claim` | `claimType` | Category of the assertion |
+| object | No | string | `object` | `object` | Target: skill name, rating value, etc. |
+| statement | No | string | `statement` | `statement` | Human-readable explanation |
+| stars | No | number (0-5) | `stars` | `stars` | Star rating |
+| confidence | No | number (0-1) | `confidence` | `confidence` | Signer's confidence |
+| score | No | number (-1 to 1) | `score` | — | Normalized score (REST only) |
+| aspect | No | string | `aspect` | `aspect` | What dimension is being rated |
+| sourceURI | No | string (URI) | `sourceURI` | `source.uri` | Where claim info comes from |
+| howKnown | No | string (enum) | `howKnown` | `source.howKnown` | How signer knows this |
+| digestMultibase | No | string | `digestMultibase` | `source.digestMultibase` | Hash of source content |
+| dateObserved | No | string (ISO 8601) | `dateObserved` | `source.dateObserved` | When source was observed |
+| evidence | No | array | Image table | `evidence[]` | Supporting photos/videos/docs |
+| effectiveDate | No | string (ISO 8601) | `effectiveDate` | `effectiveDate` | When claim became true |
+| respondAt | No | string (URI) | `respondAt` | `respondAt` | Inbox for endorsements/disputes |
+| issuerId | Auto | string (URI/DID) | `issuerId` | DID (from repo) | Who signed it |
+| claimAddress | Auto | string (AT-URI) | `claimAddress` | AT-URI (response) | Where claim lives |
+| createdAt | Auto | string (ISO 8601) | `createdAt` | `createdAt` | When created |
+| embeddedProof | No | object | `proof` | `embeddedProof` | External crypto signature |
+
+---
 
 ## Core Fields
 
@@ -111,20 +136,10 @@ What dimension is being rated (quality, reliability, etc.).
 | Type | `string` |
 | Required | No |
 
-### amt (optional)
-
-Monetary amount. REST API only.
-
-| Property | Value |
-|----------|-------|
-| Type | `number` |
-| Required | No |
-
 ## Source Fields
 
 Source describes WHERE the claim information comes from — the provenance. This is NOT
-the evidence (see Evidence below). Source is the person, website, or document that is the
-basis for the claim.
+the evidence (see Evidence below). Source is the website, document, or basis for the claim.
 
 ### sourceURI (optional)
 
@@ -183,27 +198,7 @@ When the source was observed.
 | Required | No |
 | ATProto path | `source.dateObserved` |
 
-### author (optional)
-
-Original author of the source (if different from the claim signer).
-
-| Property | Value |
-|----------|-------|
-| Type | `string` |
-| Required | No |
-| ATProto path | `source.author` |
-
-### curator (optional)
-
-Curator or aggregator of the source.
-
-| Property | Value |
-|----------|-------|
-| Type | `string` |
-| Required | No |
-| ATProto path | `source.curator` |
-
-## Evidence (ATProto only)
+## Evidence
 
 Evidence is supporting material — photos, videos, documents. Distinct from Source.
 Evidence is WHAT backs up the claim. Source is WHERE the claim information comes from.
@@ -312,8 +307,6 @@ here's the complete mapping:
 | `howKnown` | `source.howKnown` | |
 | `digestMultibase` | `source.digestMultibase` | |
 | `dateObserved` | `source.dateObserved` | |
-| `author` | `source.author` | |
-| `curator` | `source.curator` | |
 | `claimAddress` | AT-URI (response) | Set automatically, not sent by client |
 | `issuerId` | DID (from repo) | Auto-set from ATProto identity |
 | (Image table) | `evidence[]` | Separate table vs inline array |

@@ -68,9 +68,8 @@ backend-generated URI. If you set it, you'll collide with the indexer's deduplic
 
 These are different things:
 
-- **Source** = WHERE the claim information comes from (a person, a website, a document).
-  One per claim. Fields: `sourceURI`, `howKnown`, `digestMultibase`, `dateObserved`,
-  `author`, `curator`.
+- **Source** = WHERE the claim information comes from (a website, a document).
+  One per claim. Fields: `sourceURI`, `howKnown`, `digestMultibase`, `dateObserved`.
 - **Evidence** = WHAT backs up the claim (photos, videos, documents). Multiple per claim.
   Array of `{ uri, digestMultibase, mediaType, description }`.
 

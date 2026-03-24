@@ -1,246 +1,126 @@
-# LinkedClaims TypeScript SDK
+# @cooperation/linkedclaims
 
-Official TypeScript SDK for LinkedClaims - create and manage verifiable trust claims.
+Core TypeScript SDK for [LinkedClaims](https://github.com/Cooperation-org/LinkedClaims) — types, validators, normalizers, and API client for the decentralized web of trust.
+
+Also published as `@linked-claims/linkedclaims`.
+
+**Spec:** [LinkedClaims at DIF Labs](https://identity.foundation/labs-linkedclaims/)
+**Docs:** [LinkedClaims repo](https://github.com/Cooperation-org/LinkedClaims/tree/main/docs)
+**Field Reference:** [docs/field-reference.md](https://github.com/Cooperation-org/LinkedClaims/blob/main/docs/field-reference.md)
+
+For ATProto/Bluesky publishing, see [@cooperation/claim-atproto](https://github.com/Cooperation-org/claim-atproto).
 
 ## Installation
 
 ```bash
-npm install @cooperation/linked-claims
-# or
-yarn add @cooperation/linked-claims
+npm install @cooperation/linkedclaims
 ```
 
 ## Quick Start
 
 ```typescript
-import LinkedClaims from '@cooperation/linked-claims';
+import LinkedClaims, { validateClaim, starsToScore } from '@cooperation/linkedclaims';
 
-// Initialize client (defaults to production API)
+// Initialize client (defaults to live.linkedtrust.us)
 const client = new LinkedClaims();
 
-// Authenticate
-await client.auth.login('user@example.com', 'password');
+// Or point at a different backend
+const client = new LinkedClaims({ baseUrl: 'https://dev.linkedtrust.us' });
 
-// Create a claim
-const { claim } = await client.claims.create({
+// Validate a claim before sending
+const errors = validateClaim({
+  subject: 'https://github.com/alice',
+  claim: 'HAS_SKILL',
+  object: 'React',
+  stars: 4
+});
+
+if (errors.length === 0) {
+  await client.auth.login('user@example.com', 'password');
+
+  const { claim } = await client.claims.create({
     subject: 'https://github.com/alice',
-    claim: 'endorsement',
-    statement: 'Alice is an excellent TypeScript developer',
-    effectiveDate: '2024-01-15',
-    howKnown: 'FIRST_HAND'
-});
-
-console.log(`Claim created: ${claim.id}`);
+    claim: 'HAS_SKILL',
+    object: 'React',
+    statement: 'Alice is an excellent React developer',
+    stars: 4,
+    howKnown: 'FIRST_HAND',
+    sourceURI: 'https://github.com/alice/react-project'
+  });
+}
 ```
 
-## Drop-in Replacement
+## What's in the SDK
 
-This SDK is designed as a drop-in replacement for existing LinkedTrust client libraries:
-
-### Migrating from trust-claim-client
+### Types
 
 ```typescript
-// Old way
-import { trustClaimClient } from './lib/trust-claim-client';
-await trustClaimClient.createClaim({...});
-
-// New way
-import { linkedClaims } from '@cooperation/linked-claims';
-await linkedClaims.createClaim({...}); // Same API!
+import type { Claim, CreateClaimInput, HowKnown, EntityType, IssuerIdType } from '@cooperation/linkedclaims';
 ```
 
-### Migrating from linkedtrust-client
+### Validators
 
 ```typescript
-// Old way
-import { linkedTrustClient } from './lib/linkedtrust-client';
+import { validateClaim, validateClaimField, isValidUri } from '@cooperation/linkedclaims';
 
-// New way  
-import { linkedClaims } from '@cooperation/linked-claims';
-// All the same methods are available
+validateClaim({ subject: 'not-a-uri', claim: 'HAS_SKILL' });
+// [{ field: 'subject', error: 'Subject must be a valid URI' }]
+
+isValidUri('https://github.com/alice');  // true
+isValidUri('did:plc:abc123');            // true
+isValidUri('just a string');             // false
 ```
 
-## Authentication
-
-### Email/Password
+### Normalizers
 
 ```typescript
-const authResponse = await client.auth.login('user@example.com', 'password');
-console.log(`Logged in as ${authResponse.user.email}`);
+import { starsToScore, scoreToStars, normalizeUri, userIdToUri } from '@cooperation/linkedclaims';
+
+starsToScore(5);    // 1.0
+starsToScore(0);    // -1.0
+scoreToStars(0);    // 2.5
+normalizeUri('github.com/alice');  // 'https://github.com/alice'
 ```
 
-### OAuth
+### API Client
 
 ```typescript
-// GitHub
-const authResponse = await client.auth.githubAuth(code);
+import LinkedClaims from '@cooperation/linkedclaims';
 
-// Google
-const authResponse = await client.auth.googleAuth(code);
+const client = new LinkedClaims({ baseUrl: 'https://live.linkedtrust.us' });
 
-// LinkedIn
-const authResponse = await client.auth.linkedinAuth(code);
-```
+// Auth
+await client.auth.login(email, password);
+await client.auth.register(email, password, name);
 
-## Creating Claims
+// Claims
+const { claim } = await client.claims.create({ subject, claim: 'HAS_SKILL', ... });
+const response = await client.claims.getBySubject('https://github.com/alice');
 
-### Basic Claim
-
-```typescript
-const { claim } = await client.claims.create({
-    subject: 'https://example.org/project/123',
-    claim: 'impact',
-    statement: 'This project provided clean water to 500 families',
-    effectiveDate: '2024-01-15',
-    howKnown: 'FIRST_HAND'
-});
-```
-
-### With Evidence
-
-```typescript
-const { claim } = await client.claims.create({
-    subject: 'https://example.org/project/123',
-    claim: 'impact',
-    statement: 'Project impact documented in report',
-    effectiveDate: '2024-01-15',
-    howKnown: 'WEB_DOCUMENT',
-    sourceURI: 'https://example.org/impact-report.pdf',
-    confidence: 0.95
-});
-```
-
-### Rating Claim
-
-```typescript
-const { claim } = await client.claims.create({
-    subject: 'https://example.org/product/456',
-    claim: 'rating',
-    statement: 'Excellent product quality',
-    aspect: 'quality',
-    stars: 5,        // 1-5 stars
-    score: 1.0,      // -1 to 1 normalized
-    howKnown: 'FIRST_HAND'
-});
-```
-
-## Querying Claims
-
-### By Subject
-
-```typescript
-const response = await client.claims.getBySubject(
-    'https://github.com/alice',
-    1,  // page
-    50  // limit
-);
-
-console.log(`Found ${response.claims.length} claims`);
-```
-
-### With Filters
-
-```typescript
-const response = await client.claims.query({
-    claim: 'endorsement',
-    issuer_id: 'https://example.org/user/123',
-    page: 1,
-    limit: 20
-});
-```
-
-## Semantic Helpers
-
-The SDK includes semantic helpers to guide users in creating valid claims:
-
-### Field Guidance
-
-```typescript
-// Get help text for fields
-const guidance = client.semantic.getFieldGuidance('subject', {
-    domain: 'impact',
-    claimType: 'impact'
-});
-
-console.log(guidance.help);
-// "Enter the URL of the project, organization, or initiative that created impact"
-```
-
-### Simplified How Known Options
-
-```typescript
-// Get user-friendly options for howKnown field
-const options = client.semantic.getSimplifiedHowKnown();
-// Returns 3-4 simple options instead of 11 technical values
-```
-
-### URI Building
-
-```typescript
-// Build valid URIs
-const uri = client.semantic.buildURI(
-    'PERSON',
-    'alice',
-    'https://example.org'
-);
-// Returns: https://example.org/person/alice
+// Credentials
+const cred = await client.credentials.submit(credential);
 ```
 
 ## Configuration
 
-### Custom API Endpoint
-
 ```typescript
 const client = new LinkedClaims({
-    baseUrl: 'https://your-api.example.com'
+  baseUrl: 'https://live.linkedtrust.us',  // default
+  auth: {
+    storage: 'memory',      // 'localStorage' | 'memory' | 'none'
+    autoRefresh: true
+  },
+  onAuthError: () => { /* redirect to login */ }
 });
 ```
 
-### Token Storage Options
+## Related Packages
 
-```typescript
-const client = new LinkedClaims({
-    auth: {
-        storage: 'memory',  // 'localStorage' | 'memory' | 'none'
-        autoRefresh: true
-    }
-});
-```
-
-### Auth Error Handling
-
-```typescript
-const client = new LinkedClaims({
-    onAuthError: () => {
-        // Redirect to login
-        window.location.href = '/login';
-    }
-});
-```
-
-## Environment Variables
-
-The SDK respects these environment variables:
-
-- `NEXT_PUBLIC_TRUST_CLAIM_BACKEND_URL` - API base URL (Next.js)
-- `REACT_APP_TRUST_CLAIM_BACKEND_URL` - API base URL (Create React App)
-- `LINKEDTRUST_BASE_URL` - API base URL (Node.js)
-- `NEXT_PUBLIC_GITHUB_CLIENT_ID` - GitHub OAuth client ID
-- `NEXT_PUBLIC_LINKEDIN_CLIENT_ID` - LinkedIn OAuth client ID
-
-## TypeScript Support
-
-Full TypeScript support with exported types:
-
-```typescript
-import type { 
-    Claim, 
-    CreateClaimInput,
-    HowKnown,
-    EntityType 
-} from '@cooperation/linked-claims';
-```
+| Package | Purpose |
+|---------|---------|
+| [@cooperation/claim-atproto](https://github.com/Cooperation-org/claim-atproto) | Publish claims on ATProto/Bluesky |
+| [@cooperation/vc-storage](https://www.npmjs.com/package/@cooperation/vc-storage) | Sign and store verifiable credentials |
 
 ## License
 
-MIT - See LICENSE file in the repository
+MIT
