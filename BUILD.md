@@ -1,174 +1,102 @@
-# CLAUDE.md - LinkedClaims Project Guide
+# Development Guide
 
-## Core Principles
+## Repository Structure
 
-LinkedClaims are addressable claims about addressable subjects. Every claim has a URI, points to a URI subject, and is cryptographically signed. This creates a web of trust across domains.
+```
+LinkedClaims/
+  spec.md                    # DIF Labs specification
+  LinkedClaimsRFC.md         # RFC (core MUST/SHOULD/MAY requirements)
+  context.json               # JSON-LD context
+  VISION.md                  # Strategic vision
+  sdk/typescript/            # @cooperation/linked-claims SDK
+  docs/                      # Developer documentation
+    field-reference.md       # Canonical field reference (THE contract)
+    architecture.md          # How the ecosystem fits together
+    building-a-client.md     # Guide to building your own app
+    atproto.md               # ATProto integration
+  examples/                  # Real-world claim examples (JSON)
+  historical/                # Old reference implementations (Flask demo, drafts)
+```
 
-See full spec: `/Users/gv/parent/linked-claims/linked-claims-spec.md` or https://identity.foundation/labs-linkedclaims/
+## SDK Development
 
-## Architecture 
-
-This is AN implementation using the simple schema at https://cooperation.org/credentials/v1/
-
-`trust_claim_backend` is a shared backend that enables different domains to have different views of the basic semantic schema. Multiple frontend apps can use the same backend API and share the trust graph.
-
-## Implementation
-
-### Authentication
-
-The backend supports OAuth and password auth:
+The core SDK is in `sdk/typescript/`. It publishes as `@cooperation/linked-claims`.
 
 ```bash
-# OAuth endpoints (GitHub, Google, LinkedIn)
-GET  /api/auth/{provider}           # Initiate OAuth
-GET  /api/auth/{provider}/callback  # OAuth callback
-POST /api/auth/logout               # Logout
-
-# Password auth
-POST /api/auth/register             # Create account
-POST /api/auth/login                # Login with email/password
-POST /api/auth/refresh              # Refresh tokens
+cd sdk/typescript
+npm install
+npm run build    # tsup → dist/
+npm test         # jest
 ```
 
-### Core API Endpoints
+### What the SDK provides
 
-```bash
-# Claims
-POST /api/claims         # Create claim
-GET  /api/claims/{id}    # Get specific claim
-GET  /api/feed           # Get claims with filters
-GET  /api/graph/{id}     # Get trust graph
+- **Types** — `Claim`, `CreateClaimInput`, `HowKnown`, `EntityType`, etc.
+- **Validators** — `validateClaim()`, `validateClaimField()`, `isValidUri()`
+- **Normalizers** — `starsToScore()`, `scoreToStars()`, `normalizeUri()`, `userIdToUri()`
+- **Constants** — `VALIDATION_LIMITS`, `DEFAULTS`, `ENDPOINTS`
+- **API Client** — `LinkedClaims` class with `claims`, `credentials`, `auth`, `profile` modules
 
-# Credentials  
-POST /api/credentials    # Submit credential
-GET  /api/credentials/{id}  # Get credential
+### Key files
 
-# Validation
-GET  /api/claims/subject/{uri}?claim=VALIDATES  # Get validations
-```
+| File | Purpose |
+|------|---------|
+| `src/types.ts` | All TypeScript interfaces |
+| `src/validators.ts` | Field and claim validation |
+| `src/normalizers.ts` | Score/URI normalization |
+| `src/constants.ts` | Limits, defaults, endpoints |
+| `src/client.ts` | API client |
+| `src/index.ts` | Public exports |
 
-### Standard Claim Types
+## Related Repositories
 
-Use these existing types:
-- `HAS_SKILL` - skill possession
-- `ENDORSES` - professional endorsement
-- `VALIDATES` - validation of another claim
-- `HAS` - possession of credentials
-- `IMPACT` - impact measurement
-- `RISK` - risk assessment
+| Repo | Purpose | npm package |
+|------|---------|-------------|
+| [claim-atproto](https://github.com/Cooperation-org/claim-atproto) | ATProto lexicon + SDK | `@cooperation/claim-atproto` |
+| [trust_claim_backend](https://github.com/Whats-Cookin/trust_claim_backend) | Reference backend API | — |
+| [trust_claim](https://github.com/Whats-Cookin/trust_claim) | Reference frontend | — |
 
-### Creating Claims
+## Backend
 
-```javascript
-// Example: Create skill claim
-POST /api/claims
-{
-    "subject": "https://github.com/username",
-    "claim": "HAS_SKILL", 
-    "object": "React",
-    "statement": "Expert React developer",
-    "score": 0.8,  // -1 to 1 normalized
-    "sourceURI": "https://github.com/username/react-project"
-}
+The reference backend is at [trust_claim_backend](https://github.com/Whats-Cookin/trust_claim_backend).
 
-// Score normalization from stars:
-// score = (stars - 2.5) / 2.5
-```
+- **Production:** https://live.linkedtrust.us
+- **Dev:** https://dev.linkedtrust.us
+- **API docs:** https://live.linkedtrust.us/api/docs/
 
-### URI Patterns
+You do NOT need to run the backend locally to develop the SDK or build a client. Point
+at `live.linkedtrust.us` or `dev.linkedtrust.us`.
 
-```
-https://live.linkedtrust.us/claim/{id}
-https://github.com/{username}
-https://linkedin.com/in/{profile}
-did:example:{identifier}
-```
+## Standard Claim Types
 
-## Backend Details
+Use these existing types. Don't invent new ones without coordination.
 
-**Development Backend:** http://localhost:3000  
-**Production Backend:** https://live.linkedtrust.us  
-**API Docs:** https://live.linkedtrust.us/api/docs
+| Type | Purpose |
+|------|---------|
+| `HAS_SKILL` | Skill attestation |
+| `ENDORSES` | Endorsement |
+| `VALIDATES` | Validation of another claim |
+| `HAS` | Possession of credential/membership |
+| `IMPACT` | Social impact measurement |
+| `RISK` | Risk assessment |
+| `rated` | Star rating |
+| `reviewed` | Review with statement |
+| `claim` | Generic claim |
 
-Environment variables:
-```bash
-NEXT_PUBLIC_BACKEND_URL=https://live.linkedtrust.us
-# or for local development
-NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
-```
+## Working with Credentials
 
-## Examples
+When your app uses rich credential formats (OpenBadges, Blockcerts, W3C VCs):
 
-### Working Implementations
+1. Submit full credential to `/api/credentials` — backend stores it and auto-extracts a LinkedClaim
+2. The extracted claim participates in the graph
+3. Full credential is retrievable via `/api/credentials/{id}`
 
-1. **Talent App** - Professional verification
-   - Location: `/Users/gv/parent/linked-trust/talent`
-   - Features: Video validations, public profiles
-   - Uses: OAuth auth, creates ENDORSES claims
+This preserves rich credential formats while gaining LinkedClaims graph integration.
 
-2. **Trust Claim Frontend** - Main UI
-   - Location: `/Users/gv/parent/linked-trust/trust_claim`  
-   - Features: Full claim creation, graph viz
-   - Uses: All claim types
+## Rules
 
-3. **Create Trust App** - Scaffolding tool
-   - Location: `/Users/gv/parent/linked-trust/create-trust-app`
-   - Run: `npx create-trust-app my-app`
-
-### Building Your App
-
-Two options:
-
-**Option 1: Frontend Only**
-- Point to existing backend
-- Use standard claim types
-- Follow examples in talent app
-
-**Option 2: Frontend + Your Backend**
-- Your backend for domain logic
-- Call trust_claim_backend for claims
-- See: `/Users/gv/parent/linked-trust/trust_claim_backend/GUIDE_TO_TRUST_APPS.md`
-
-## Patterns
-
-### Storing Complex Credentials (OpenBadges, Blockcerts, etc.)
-
-When your app uses rich credential formats beyond simple claims:
-
-1. **Submit full credential** to `/api/credentials`
-   - Backend stores complete credential structure
-   - Auto-extracts a LinkedClaim for graph integration
-
-2. **Keep both references**:
-   - `credentialUri` - for retrieving full credential data
-   - `claimId` - for graph queries and relationships
-
-3. **Query pattern**:
-   ```javascript
-   // Find credentials by claim type
-   const claims = await linkedClaims.claims.getClaimsBySubject(userDid);
-   
-   // Get full credential when needed
-   const credential = await fetch(`/api/credentials/${credentialUri}`);
-   ```
-
-4. **Example: Certify app**
-   - Stores OpenBadges v3 credentials
-   - No separate database (removed Firebase)
-   - Credentials preserved in full fidelity
-   - Claims enable discovery and trust graph
-
-This pattern preserves rich credential formats while gaining LinkedClaims benefits.
-
-## Key Files
-
-- **Backend Guide:** `/Users/gv/parent/linked-trust/trust_claim_backend/GUIDE_TO_TRUST_APPS.md`
-- **Integration Guide:** `/Users/gv/parent/linked-trust/INTEGRATION_GUIDE.md`
-- **Ecosystem Guide:** `/Users/gv/parent/linked-trust/ECOSYSTEM_GUIDE.md`
-
-## Don'ts
-
-- Don't create new API endpoints in trust_claim_backend
-- Don't change existing API contracts
-- Don't invent claim types without coordination
-- Don't store claims in your own database - use the shared backend
+- Follow the [Field Reference](./docs/field-reference.md) exactly
+- Don't change existing API contracts in the backend
+- Don't invent `howKnown` values — use the enum in the field reference
+- Subject must always be a valid URI
+- If you need a new claim type, coordinate with the team
