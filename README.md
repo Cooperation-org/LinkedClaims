@@ -55,11 +55,11 @@ API docs: https://live.linkedtrust.us/api/docs/
 ### Option 2: Use the TypeScript SDK
 
 ```bash
-npm install @cooperation/linked-claims
+npm install @cooperation/linkedclaims
 ```
 
 ```typescript
-import { LinkedClaims, validateClaim, starsToScore } from '@cooperation/linked-claims';
+import { LinkedClaims, validateClaim, starsToScore } from '@cooperation/linkedclaims';
 
 const client = new LinkedClaims({
   baseUrl: 'https://live.linkedtrust.us'
@@ -141,7 +141,7 @@ LinkedClaims is not the center of the universe. Claims don't need to originate h
 
 | Package | Purpose |
 |---------|---------|
-| `@cooperation/linked-claims` | Core types, validators, normalizers, API client |
+| `@cooperation/linkedclaims` | Core types, validators, normalizers, API client |
 | `@cooperation/claim-atproto` | ATProto lexicon, ClaimBuilder, publish/query client |
 | `@cooperation/vc-storage` | Google Drive credential storage with DID integration |
 

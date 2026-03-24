@@ -8,7 +8,7 @@
 ## SDK Structure
 
 ```
-@cooperation/linked-claims/
+@cooperation/linkedclaims/
 ├── src/
 │   ├── index.ts           # Exports everything
 │   ├── types.ts           # Keep existing types
@@ -69,7 +69,7 @@
 ## Usage Examples
 
 ```typescript
-import { LinkedClaimsClient, validators, normalizers } from '@cooperation/linked-claims';
+import { LinkedClaimsClient, validators, normalizers } from '@cooperation/linkedclaims';
 
 // Validate before sending
 const claim = {

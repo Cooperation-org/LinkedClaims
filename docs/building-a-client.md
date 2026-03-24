@@ -18,7 +18,7 @@ You get the graph, the indexer, and ATProto publishing for free.
 
 ### B. Use the SDK + existing backend
 
-Install `@cooperation/linked-claims` and use the API client. You get type safety,
+Install `@cooperation/linkedclaims` and use the API client. You get type safety,
 validation, and normalization.
 
 **Good for:** TypeScript apps that want a better developer experience.
@@ -123,7 +123,7 @@ const skillClaim = {
 ### Step 2: Validate
 
 ```typescript
-import { validateClaim } from '@cooperation/linked-claims';
+import { validateClaim } from '@cooperation/linkedclaims';
 
 const errors = validateClaim(skillClaim);
 if (errors.length > 0) {

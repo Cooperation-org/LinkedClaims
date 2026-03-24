@@ -1,5 +1,5 @@
 {
-  "name": "@cooperation/linked-claims",
+  "name": "@cooperation/linkedclaims",
   "version": "0.2.0",
   "description": "TypeScript SDK for LinkedClaims - create and manage trust claims",
   "main": "dist/index.js",

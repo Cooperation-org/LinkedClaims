@@ -8,7 +8,7 @@ LinkedClaims/
   LinkedClaimsRFC.md         # RFC (core MUST/SHOULD/MAY requirements)
   context.json               # JSON-LD context
   VISION.md                  # Strategic vision
-  sdk/typescript/            # @cooperation/linked-claims SDK
+  sdk/typescript/            # @cooperation/linkedclaims SDK
   docs/                      # Developer documentation
     field-reference.md       # Canonical field reference (THE contract)
     architecture.md          # How the ecosystem fits together
@@ -20,7 +20,7 @@ LinkedClaims/
 
 ## SDK Development
 
-The core SDK is in `sdk/typescript/`. It publishes as `@cooperation/linked-claims`.
+The core SDK is in `sdk/typescript/`. It publishes as `@cooperation/linkedclaims`.
 
 ```bash
 cd sdk/typescript

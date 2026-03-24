@@ -29,7 +29,7 @@ grows organically as attestations are added from any source.
 The [LinkedClaims specification](../spec.md) defines what a valid claim looks like. It's
 published at the Decentralized Identity Foundation. This is the contract everyone follows.
 
-### 2. Core SDK (`@cooperation/linked-claims`)
+### 2. Core SDK (`@cooperation/linkedclaims`)
 
 TypeScript library in [sdk/](../sdk/). Provides:
 - **Types** — `Claim`, `CreateClaimInput`, `HowKnown`, etc.
