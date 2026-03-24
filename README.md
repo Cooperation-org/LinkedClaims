@@ -2,7 +2,11 @@
 
 An open standard and SDK for creating addressable, signed claims about anything with a URI -- forming a decentralized web of trust.
 
-**Spec:** [LinkedClaims at DIF Labs](https://identity.foundation/labs-linkedclaims/) | [spec.md](./spec.md)
+## [Read the Specification at DIF Labs](https://identity.foundation/labs-linkedclaims/)
+
+The LinkedClaims spec is published at the Decentralized Identity Foundation. That is the
+canonical, authoritative version. A [local copy](./spec.md) is included in this repo for
+offline reference and AI tooling.
 
 **Vision:** [How the decentralized web of trust works](./VISION.md)
 
