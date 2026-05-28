@@ -6,6 +6,17 @@ The trust layer.
 
 **LinkedTrust** is the service built on top. You give it a URI; it returns a trust score relative to *you*, computed from claims you and your trusted sources have attested.
 
+```
+                                                trust score
+       any URI  ──────────→  [ LinkedTrust ]  ──────────→  (relative to you)
+                                    ▲
+                                    │  composed from
+                                    │
+                          web of signed LinkedClaims
+                          (published by people, orgs,
+                           abra, amebo, anyone)
+```
+
 URI in, score out. The complexity is encapsulated.
 
 LinkedTrust scores. It does not decide. The agent or person asking decides what to do with the score.
