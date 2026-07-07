@@ -114,6 +114,53 @@ const published = await client.publish(claim);
 
 See [@cooperation/claim-atproto](https://github.com/Cooperation-org/claim-atproto) for the full ATProto SDK.
 
+## Sign in with LinkedTrust (SSO)
+
+LinkedTrust is also an **OpenID Connect (OIDC) provider**. Any app can let people "Sign in with LinkedTrust" and receive a verified identity plus a `trust` signal — whether the user is vouched-for in the web of trust.
+
+- **Issuer:** `https://live.linkedtrust.us`
+- **Discovery:** [`/.well-known/openid-configuration`](https://live.linkedtrust.us/.well-known/openid-configuration)
+- **Scopes:** `openid email profile trust`
+
+It's standard OIDC, so most apps integrate with the OIDC/OAuth plugin they already have (WordPress, Ghost, Odoo, Node/passport, Django) pointed at the issuer — no LinkedTrust-specific code required. Request a `client_id` / `client_secret` from the LinkedTrust team, registering your callback as the redirect URI.
+
+### Django apps
+
+[django-linkedtrust-auth](https://github.com/Cooperation-org/django-linkedtrust-auth) adds "Sign in with LinkedTrust" to any Django app (Taiga, custom apps, ...):
+
+```bash
+pip install "git+https://github.com/Cooperation-org/django-linkedtrust-auth.git"
+```
+
+```python
+# settings.py
+INSTALLED_APPS += ["linkedtrust_auth"]
+LINKEDTRUST_URL = "https://live.linkedtrust.us"
+LINKEDTRUST_CLIENT_ID = "lt_..."
+LINKEDTRUST_CLIENT_SECRET = os.environ["LINKEDTRUST_CLIENT_SECRET"]
+LINKEDTRUST_FRONTEND_URL = "https://your-app.example.com"
+# Pick or write a handler that maps OIDC userinfo -> (user, tokens):
+LINKEDTRUST_USER_HANDLER = "linkedtrust_auth.taiga_adapter.get_or_create_user"  # or cases_adapter, or your own
+```
+
+```python
+# urls.py
+path("api/v1/auth/linkedtrust/", include("linkedtrust_auth.urls")),
+```
+
+Register the client's redirect URI as `https://your-app.example.com/api/v1/auth/linkedtrust/callback`.
+
+### Invite links (one link per person, works across apps)
+
+Mint a signed invite so only invited people get accounts. The **same link works at every app that shares `LINKEDTRUST_INVITE_SECRET`** — no shared database, no broker service:
+
+```bash
+python manage.py lt_mint_invite --email jane@example.org --apps app1,app2 \
+    --base https://your-app.example.com --days 14
+```
+
+Set `LINKEDTRUST_REQUIRE_INVITE = True` to gate account creation to invited people, or mint from the admin-only page at `/api/v1/auth/linkedtrust/invites/`. Full guide: [plugin README](https://github.com/Cooperation-org/django-linkedtrust-auth#invite-links-one-link-per-volunteer-works-across-apps).
+
 ## Documentation
 
 | Doc | What it covers |
@@ -131,8 +178,9 @@ LinkedClaims is not the center of the universe. Claims don't need to originate h
 |------|-----------|
 | **This repo** | Spec, core SDK, docs |
 | [claim-atproto](https://github.com/Cooperation-org/claim-atproto) | ATProto lexicon + SDK for publishing claims on Bluesky |
-| [trust_claim_backend](https://github.com/Whats-Cookin/trust_claim_backend) | Reference backend API (Node/Prisma) at live.linkedtrust.us |
+| [trust_claim_backend](https://github.com/Whats-Cookin/trust_claim_backend) | Reference backend API (Node/Prisma) + OIDC provider at live.linkedtrust.us |
 | [trust_claim](https://github.com/Whats-Cookin/trust_claim) | Reference frontend (React) at live.linkedtrust.us |
+| [django-linkedtrust-auth](https://github.com/Cooperation-org/django-linkedtrust-auth) | "Sign in with LinkedTrust" (OIDC) + cross-app invite links for any Django app |
 | [certify](https://github.com/Cooperation-org/certify) | W3C Verifiable Credential issuance using LinkedClaims |
 | [linked-resume](https://github.com/Cooperation-org/linked-resume) | Resume/credential app using VC storage |
 | [talent](https://github.com/Cooperation-org/talent) | Professional credential verification |
