@@ -19,13 +19,14 @@ element. See a live one: [live.linkedtrust.us/badge/124713](https://live.linkedt
 | `compact` | flag, smaller variant |
 | `api-base` | default `https://live.linkedtrust.us` |
 
-**Choosing a layout — this matters for photos.** `card` (the default) shows
-media at its natural aspect ratio, capped at 280px tall — it is the same look
-as the badge pages (`live.linkedtrust.us/badge/<id>`). Use it for photos,
-portraits, and grids/walls. `row` is a fixed 180px-tall horizontal strip with
-the media cropped into a 35%-wide box — good for compact video rows on dark
-sections, bad for portraits (they get squashed). If a photo looks
-wrong-aspect, you are almost certainly in `row`.
+**Layout and width — this is what makes badges look right or wrong.**
+The badge pages (`live.linkedtrust.us/badge/<id>`) are `layout="row"` in a
+**~600px container**: a 180px-tall strip with media in a 35% box. Row is
+designed for that width — squeeze it into a ~350px grid cell and the media
+crushes to ~120px and the aspect looks broken. Rules of thumb: give `row`
+500-600px (a 1-2 column grid), or use `card` (natural media aspect, capped
+280px tall) for narrow cells and 3+ column grids. If a badge looks squashed,
+first check the width of the box you put it in.
 
 **Prefer the web component over the iframe.** The iframe embed
 (`live.linkedtrust.us/embed/<id>`) exists for sites that cannot run scripts;
