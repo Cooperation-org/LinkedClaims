@@ -19,6 +19,19 @@ element. See a live one: [live.linkedtrust.us/badge/124713](https://live.linkedt
 | `compact` | flag, smaller variant |
 | `api-base` | default `https://live.linkedtrust.us` |
 
+**Choosing a layout — this matters for photos.** `card` (the default) shows
+media at its natural aspect ratio, capped at 280px tall — it is the same look
+as the badge pages (`live.linkedtrust.us/badge/<id>`). Use it for photos,
+portraits, and grids/walls. `row` is a fixed 180px-tall horizontal strip with
+the media cropped into a 35%-wide box — good for compact video rows on dark
+sections, bad for portraits (they get squashed). If a photo looks
+wrong-aspect, you are almost certainly in `row`.
+
+**Prefer the web component over the iframe.** The iframe embed
+(`live.linkedtrust.us/embed/<id>`) exists for sites that cannot run scripts;
+everywhere else use `<linked-badge>` — it sizes itself, themes correctly,
+and resolves media URLs against its `api-base`.
+
 Every badge page (`live.linkedtrust.us/badge/<id>`) has copy-paste share and
 embed buttons. Prefer an iframe? Each claim has a bare page at
 `live.linkedtrust.us/embed/<id>`.
