@@ -54,9 +54,26 @@ Served with no-cache from `https://demos.linkedtrust.us/embed/`. A page that
 uses them in production: [workers.vc](https://workers.vc) (the wall and the
 join page).
 
-## Posting claims with photos
+## Media on claims — how it actually works (verified 2026-07-17)
 
-Compress images in the browser before the claim POST — canvas resize to max
-1200px at 0.8 JPEG quality for files over 2MB (see trust_claim's
-`MediaUploader`). Inline multi-megabyte base64 images bloat the claim store
-and slow every render of that claim.
+**Videos are attached, images are inline. Know the difference.**
+
+- **Video**: upload the file to `POST {api}/api/video/upload` (multipart field
+  `video`). The backend stores it in object storage (Backblaze B2) and returns
+  `{ videoUrl }` — put that URL in the claim's `videoUrl` field. The claim row
+  stays small. This is what the `<linked-video-recorder>` component does for
+  you, and what trust_claim and talent both do.
+- **Images**: there is **no image upload endpoint**. The backend stores
+  whatever base64 you send in `images[].base64` as a data URL **in the
+  database row** (`trust_claim_backend/src/api/claims.ts`, `prisma.image.create`
+  with `url: dataUrl`). Send a raw phone photo and you create a multi-megabyte
+  DB row that slows every render of that claim, and your POST may time out.
+
+**Therefore: always resize images in the browser before the claim POST.**
+trust_claim's `MediaUploader` (`src/components/Form/imageUploading.tsx`) is
+the reference: files over 2MB get canvas-resized to max 1200px. Quality is
+yours to choose (trust_claim ships 0.8; workers.vc uses 1.0 — at 1200px both
+land in the low hundreds of KB).
+
+A server-side image path matching the video one (upload → B2 → URL on the
+claim) does not exist yet; until it does, client-side resize is not optional.
