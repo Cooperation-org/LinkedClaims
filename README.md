@@ -25,6 +25,13 @@ Every claim MUST:
 
 That's the minimum. See the [full spec](./spec.md) for SHOULD and MAY requirements.
 
+## Show claims on your site
+
+One script tag, one element — a verified badge with the person's words, photo,
+or video. **[docs/embedding.md](docs/embedding.md)** has the copy-paste
+snippets (badge, video recorder, feeds). Live example:
+[live.linkedtrust.us/badge/124713](https://live.linkedtrust.us/badge/124713).
+
 ## Quick Start
 
 ### Option 1: Use the API directly
